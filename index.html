@@ -1,0 +1,3202 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabay sa Emotional Safety</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 1%;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.3em;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 1%;
+            padding: 1%;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 1%;
+            margin-bottom: 1%;
+            overflow-x: auto;
+            padding: 1%;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 2%;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 2%;
+            margin-bottom: 2%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateX(3px);
+        }
+
+        .card h3 {
+            color: #764ba2;
+            font-size: 1em;
+            margin-bottom: 1%;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.5;
+            font-size: 0.9em;
+        }
+
+        .emotion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2%;
+            margin: 2% 0;
+        }
+
+        .emotion-card {
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            padding: 3%;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .emotion-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .emotion-icon {
+            font-size: 2em;
+            margin-bottom: 1%;
+        }
+
+        .emotion-label {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tips-list li {
+            padding: 2%;
+            margin-bottom: 1%;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            font-size: 0.9em;
+        }
+
+        .tips-list li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 1%;
+        }
+
+        .emergency-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 3%;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: bold;
+            width: 100%;
+            margin: 2% 0;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(238, 90, 111, 0.3);
+        }
+
+        .emergency-btn:active {
+            transform: scale(0.98);
+        }
+
+        .hotline {
+            background: #fff3cd;
+            padding: 2%;
+            border-radius: 8px;
+            margin: 1% 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .hotline strong {
+            color: #856404;
+            font-size: 0.95em;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 3%;
+            border-radius: 12px;
+            margin: 2% 0;
+            text-align: center;
+            font-style: italic;
+            color: #667eea;
+            border: 2px dashed #667eea40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌸 Gabay sa Emotional Safety 🌸</h1>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('home')">Bahay</button>
+            <button class="tab-btn" onclick="showTab('emotions')">Emosyon</button>
+            <button class="tab-btn" onclick="showTab('tips')">Payo</button>
+            <button class="tab-btn" onclick="showTab('help')">Tulong</button>
+        </div>
+
+        <div id="home" class="content-section active">
+            <div class="quote-box">
+                "Ang iyong damdamin ay valid. Mahalaga ang iyong mental health."
+            </div>
+
+            <div class="card">
+                <h3>Ano ang Emotional Safety?</h3>
+                <p>Ang emotional safety ay ang pakiramdam na ligtas kang ipahayag ang iyong tunay na damdamin nang walang takot sa paghatol, pang-aapi, o pagtanggi. Ito ay susi sa malusog na relasyon at mental wellness.</p>
+            </div>
+
+            <div class="card">
+                <h3>Bakit Mahalaga?</h3>
+                <p>Kapag emotionally safe ka, mas madali mong:</p>
+                <ul class="tips-list">
+                    <li>Maipahayag ang iyong tunay na sarili</li>
+                    <li>Bumuo ng malalim na koneksyon</li>
+                    <li>Makabangon mula sa mga pagsubok</li>
+                    <li>Makaramdam ng kapayapaan sa sarili</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Mga Senyas ng Emotional Safety</h3>
+                <p>• Nirerespeto ang iyong mga hangganan<br>
+                • Pinapakinggan ka nang buong atensyon<br>
+                • Tinatanggap ka nang walang kondisyon<br>
+                • May kalayahan kang magkamali<br>
+                • Hindi ka natatakot mag-open up</p>
+            </div>
+
+            <div class="card">
+                <h3>Ang Kultura ng Pag-iisa sa Pilipinas</h3>
+                <p>Sa ating kultura, madalas nating marinig ang "Huwag kang mag-alala, malakas ka," o "Bahala na." Ngunit ang tunay na lakas ay nasa pagtanggap na minsan, kailangan natin ng tulong. Hindi kahinaan ang umamin na nahihirapan ka.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mga Hadlang sa Emotional Safety</h3>
+                <ul class="tips-list">
+                    <li>Takot sa paghatol ng iba (hiya)</li>
+                    <li>Kultura ng "pagtitiis" at pagiging matibay</li>
+                    <li>Kakulangan ng mental health awareness</li>
+                    <li>Stigma sa paghingi ng psychological help</li>
+                    <li>Pressure mula sa pamilya at lipunan</li>
+                    <li>Kawalan ng safe space para mag-share</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Paano Lumikha ng Safe Space</h3>
+                <p><strong>Sa Sarili:</strong> Tanggapin ang iyong mga kahinaan. Bigyan ng oras ang sarili na mag-reflect at magpahinga. Huwag maging masyadong kritikal sa sarili.</p>
+                <p><strong>Sa Pamilya:</strong> Buksan ang komunikasyon. Magkaroon ng family time kung saan lahat ay maaaring mag-share nang walang takot.</p>
+                <p><strong>Sa Trabaho:</strong> Humingi ng respeto sa boundaries. Huwag dalhin sa bahay ang stress. May karapatang magpahinga.</p>
+            </div>
+
+            <div class="card">
+                <h3>Red Flags: Kailan Wala kang Emotional Safety</h3>
+                <ul class="tips-list">
+                    <li>Laging natatakot na magsalita</li>
+                    <li>Ang damdamin mo ay minamaliit o tinatawanan</li>
+                    <li>Walang privacy sa mga personal na bagay</li>
+                    <li>Ginagamit laban sa iyo ang mga naishare mo</li>
+                    <li>Pinipilit kang gawin ang ayaw mo</li>
+                    <li>Kontrolado ang bawat kilos at desisyon mo</li>
+                    <li>Verbal, emotional, o physical abuse</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Simula ng Pagbabago</h3>
+                <p>Ang pagkakaroon ng emotional safety ay nagsisimula sa pagtanggap na deserve mo ito. Hindi ka masama o mahina dahil may nararamdaman ka. Ikaw ay tao, at natural lang na magkaroon ng emosyon. Simulan sa maliliit na hakbang - isang araw, isang pagpapahayag ng damdamin, isang pagtatanggol sa sarili.</p>
+            </div>
+
+            <div class="card">
+                <h3>Toxic Relationships vs Healthy Relationships</h3>
+                <p><strong>Toxic Signs:</strong></p>
+                <ul class="tips-list">
+                    <li>Palaging ikaw ang mali, kahit hindi mo kasalanan</li>
+                    <li>Ginagamit ang love at affection bilang reward/punishment</li>
+                    <li>Isolation mula sa pamilya at kaibigan</li>
+                    <li>Constant criticism at pag-belittle</li>
+                    <li>Gaslighting - pinapaniwala ka na mali ang perception mo</li>
+                    <li>Walking on eggshells - takot ka lagi sa reaction niya</li>
+                </ul>
+                <p><strong>Healthy Signs:</strong></p>
+                <ul class="tips-list">
+                    <li>Respeto sa opinions at decisions mo</li>
+                    <li>Support sa dreams at goals mo</li>
+                    <li>Honest communication, walang mind games</li>
+                    <li>May personal space at independence</li>
+                    <li>Accountability - nag-aadmit ng mistakes</li>
+                    <li>Equal partnership, walang power imbalance</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Intergenerational Trauma</h3>
+                <p>Ang trauma ay puwedeng maipasa mula sa magulang sa anak. Halimbawa:</p>
+                <ul class="tips-list">
+                    <li>Strict parenting dahil sa poverty ng parents noon</li>
+                    <li>Emotional unavailability dahil hindi rin natuto magpakita ng affection</li>
+                    <li>Anger issues na galing sa abusive household din</li>
+                    <li>Fear of abandonment dahil naranasan ng parents</li>
+                </ul>
+                <p>Hindi excuse ang trauma para makasakit, pero understanding ito kung bakit ganon ang behavior. Breaking the cycle starts with awareness at commitment na hindi na ipapasa sa next generation.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Labor</h3>
+                <p>Ito ay yung invisible work na ginagawa para sa emotional needs ng iba. Madalas nakakabit ito sa gender roles.</p>
+                <p><strong>Mga Halimbawa:</strong></p>
+                <ul class="tips-list">
+                    <li>Palaging ikaw ang nag-aayos after conflict</li>
+                    <li>Ikaw ang responsible sa lahat ng emotional needs ng pamilya</li>
+                    <li>Kailangan mo palaging maging "cheerleader" ng iba</li>
+                    <li>Ikaw ang tulay sa lahat ng communication</li>
+                    <li>Managing everyone's emotions except your own</li>
+                </ul>
+                <p>Ang emotional labor ay valid work. Okay lang humindi minsan. Okay lang magpahinga.</p>
+            </div>
+
+            <div class="card">
+                <h3>Kapag May Mental Health Condition ang Family Member</h3>
+                <ul class="tips-list">
+                    <li>Educate yourself tungkol sa condition niya</li>
+                    <li>Set realistic expectations - hindi overnight ang improvement</li>
+                    <li>May sarili ka ring boundaries - hindi ka savior</li>
+                    <li>Encourage treatment pero hindi mo siya mapipilitang gumaling</li>
+                    <li>Take care din ng sarili mo - caregiver burnout is real</li>
+                    <li>Join support groups para sa families</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Workplace Emotional Safety</h3>
+                <p><strong>Red Flags sa Workplace:</strong></p>
+                <ul class="tips-list">
+                    <li>Toxic boss na palaging nang-aabuso verbally</li>
+                    <li>No work-life balance culture</li>
+                    <li>Gossip at backstabbing is normalized</li>
+                    <li>Walang support system o mentorship</li>
+                    <li>Fear-based management style</li>
+                    <li>Mental health stigma at walang sick leave for mental health</li>
+                </ul>
+                <p><strong>Paano Mag-protect:</strong></p>
+                <ul class="tips-list">
+                    <li>Document everything (emails, conversations)</li>
+                    <li>Report sa HR kung may violations</li>
+                    <li>Build alliance with supportive coworkers</li>
+                    <li>Know your rights as employee</li>
+                    <li>Huwag dalhin sa personal ang work stress</li>
+                    <li>Kung toxic na talaga, okay lang umalis</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Financial Stress at Mental Health</h3>
+                <p>Ang money problems ay major cause ng anxiety at depression. Hindi ka bobo o tamad kung nahihirapan financially.</p>
+                <p><strong>Practical Steps:</strong></p>
+                <ul class="tips-list">
+                    <li>List down lahat ng income at expenses</li>
+                    <li>Identify needs vs wants</li>
+                    <li>Build emergency fund kahit maliit (start with 1k)</li>
+                    <li>Humingi ng tulong sa financial literacy programs</li>
+                    <li>Huwag mahiya humingi ng support sa pamilya/friends kung kailangan</li>
+                    <li>Avoid comparison - iba-iba ang timeline ng success</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Kapag May Nangyaring Traumatic Event</h3>
+                <p>Natural disasters, accidents, violence, loss - lahat ito ay traumatic. Ang normal reactions ay:</p>
+                <ul class="tips-list">
+                    <li>Shock, disbelief, denial</li>
+                    <li>Takot, anxiety, panic attacks</li>
+                    <li>Nightmares o flashbacks</li>
+                    <li>Difficulty concentrating</li>
+                    <li>Irritability o anger</li>
+                    <li>Guilt o self-blame</li>
+                </ul>
+                <p><strong>Ano Ang Gagawin:</strong> Give yourself time to process. Talk about it kapag ready ka na. Seek professional help kung hindi mo na kaya. Join support groups. Avoid self-medication through drugs/alcohol.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Safety sa Social Media</h3>
+                <p>Ang online spaces ay pwedeng toxic. Protect your mental health:</p>
+                <ul class="tips-list">
+                    <li>Mute o unfollow accounts na nag-trigger ng negativity</li>
+                    <li>Limit ang time online - set app timers</li>
+                    <li>Don't engage sa trolls or toxic arguments</li>
+                    <li>Curate your feed - follow positive, uplifting content</li>
+                    <li>Remember: people only post highlights, not struggles</li>
+                    <li>Block o report abuse agad</li>
+                    <li>Take social media breaks regularly</li>
+                </ul>
+                <p><strong>Cyberbullying:</strong> Save evidence, report sa platform, tell trusted adults. Huwag mag-respond sa bully. Deactivate temporarily if needed.</p>
+            </div>
+
+            <div class="card">
+                <h3>Quarter-Life at Mid-Life Crisis</h3>
+                <p><strong>Quarter-Life Crisis (20s-30s):</strong></p>
+                <ul class="tips-list">
+                    <li>Pressure ng career, relationships, success</li>
+                    <li>Comparing self sa peers</li>
+                    <li>Uncertainty about future</li>
+                    <li>Identity confusion</li>
+                    <li>Financial instability</li>
+                </ul>
+                <p><strong>Mid-Life Crisis (40s-50s):</strong></p>
+                <ul class="tips-list">
+                    <li>Questioning life choices and regrets</li>
+                    <li>Mortality awareness</li>
+                    <li>Empty nest syndrome</li>
+                    <li>Career stagnation</li>
+                    <li>Body changes and aging</li>
+                </ul>
+                <p><strong>Both need:</strong> Self-reflection, redefining goals, acceptance, possible therapy, new hobbies/passions.</p>
+            </div>
+
+            <div class="card">
+                <h3>Immigrant at OFW Mental Health</h3>
+                <p>Ang pagkakalayo sa pamilya at adjustment sa ibang bansa ay challenging:</p>
+                <ul class="tips-list">
+                    <li><strong>Homesickness:</strong> Normal at valid. Video calls, connect with fellow Filipinos</li>
+                    <li><strong>Culture Shock:</strong> Takes time to adjust. Be patient with yourself</li>
+                    <li><strong>Language Barriers:</strong> Causes stress. Enroll sa classes, practice daily</li>
+                    <li><strong>Isolation:</strong> Build new support system. Join Filipino communities</li>
+                    <li><strong>Guilt:</strong> "Bakit ako nagre-relax dito habang naghhirap sila?" - You deserve happiness too</li>
+                    <li><strong>Identity Loss:</strong> Balancing old and new culture. You can be both</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Religious Trauma</h3>
+                <p>Kapag ang religion mismo ang naging source ng harm:</p>
+                <ul class="tips-list">
+                    <li>Extreme guilt over natural human behaviors</li>
+                    <li>Fear-based beliefs (hell, damnation)</li>
+                    <li>Shaming of questions or doubts</li>
+                    <li>Control over personal choices</li>
+                    <li>LGBTQ+ discrimination sa name ng religion</li>
+                    <li>Toxic purity culture</li>
+                </ul>
+                <p><strong>Healing:</strong> Therapy with trauma-informed professional, deconstruction process, finding supportive community, redefining beliefs on your terms. Spirituality can be healthy - ang problema ay abuse ng power.</p>
+            </div>
+
+            <div class="card">
+                <h3>Academic Pressure at Student Mental Health</h3>
+                <p>Ang pressure sa pag-aaral sa Pilipinas ay grabe:</p>
+                <ul class="tips-list">
+                    <li>Unrealistic expectations from parents</li>
+                    <li>Comparison sa "achiever" na kaklase</li>
+                    <li>Fear of failure and disappointing family</li>
+                    <li>Burnout from too much workload</li>
+                    <li>Bullying at peer pressure</li>
+                    <li>Future uncertainty and career pressure</li>
+                </ul>
+                <p><strong>Para sa Students:</strong> Your worth is not your grades. It's okay to not be okay. Seek help from guidance counselor. Take breaks. Mental health > academic pressure.</p>
+                <p><strong>Para sa Parents:</strong> Support over pressure. Listen to struggles. Success has many definitions. Prioritize mental wellness over medals.</p>
+            </div>
+
+            <div class="card">
+                <h3>Pandemic Trauma at Post-Pandemic Adjustment</h3>
+                <p>Ang COVID-19 pandemic ay nag-iwan ng lasting effects:</p>
+                <ul class="tips-list">
+                    <li>Loss ng loved ones, jobs, opportunities</li>
+                    <li>Isolation at loneliness</li>
+                    <li>Health anxiety at germaphobia</li>
+                    <li>Difficulty reintegrating to social life</li>
+                    <li>Changed life plans at dreams</li>
+                    <li>Economic hardship</li>
+                </ul>
+                <p>Collective trauma ito. Hindi ikaw lang. Ang adjustment back to "normal" ay process. Give yourself time and grace.</p>
+            </div>
+
+            <div class="card">
+                <h3>Elder Care at Sandwich Generation</h3>
+                <p><strong>Sandwich Generation:</strong> Caring for both aging parents and own children simultaneously.</p>
+                <p><strong>Challenges:</strong></p>
+                <ul class="tips-list">
+                    <li>Financial burden - gastos sa dalawang generations</li>
+                    <li>Time constraints - walang time for self</li>
+                    <li>Emotional exhaustion - caregiver burnout</li>
+                    <li>Role reversal - parent mo naging dependent na</li>
+                    <li>Guilt - feeling not enough for anyone</li>
+                </ul>
+                <p><strong>Survival Tips:</strong> Ask for help from siblings. Consider hiring help if possible. Set boundaries. Regular self-care. Join support groups. Remember: you cannot pour from empty cup.</p>
+            </div>
+
+            <div class="card">
+                <h3>Disability at Chronic Illness Mental Health</h3>
+                <p>Living with disability or chronic illness affects mental health significantly:</p>
+                <ul class="tips-list">
+                    <li>Grief over lost abilities or "normal" life</li>
+                    <li>Frustration with limitations</li>
+                    <li>Social isolation and misunderstanding</li>
+                    <li>Medical trauma from treatments</li>
+                    <li>Financial stress from healthcare costs</li>
+                    <li>Identity changes - "Who am I now?"</li>
+                </ul>
+                <p><strong>Important:</strong> Your feelings are valid. Seek support from others with similar conditions. Advocate for accessibility. Mental health care is part of treatment plan.</p>
+            </div>
+
+            <div class="card">
+                <h3>Poverty at Mental Health Connection</h3>
+                <p>Poverty is not just economic - it's mental health issue:</p>
+                <ul class="tips-list">
+                    <li>Chronic stress from survival mode</li>
+                    <li>Shame and stigma from society</li>
+                    <li>Limited access to mental health services</li>
+                    <li>Trauma from unstable housing/food insecurity</li>
+                    <li>Hopelessness about future</li>
+                    <li>Generational trauma</li>
+                </ul>
+                <p>Poverty is systemic issue, not personal failure. Your mental health struggles are valid. Free resources exist - barangay health centers, government hospitals, NGOs.</p>
+            </div>
+
+            <div class="card">
+                <h3>Toxic Positivity vs Genuine Support</h3>
+                <p><strong>Toxic Positivity:</strong></p>
+                <ul class="tips-list">
+                    <li>"Just be positive!" - dismisses real pain</li>
+                    <li>"Good vibes only" - invalidates negative emotions</li>
+                    <li>"Others have it worse" - minimizes your struggle</li>
+                    <li>"Everything happens for a reason" - harmful when grieving</li>
+                </ul>
+                <p><strong>Genuine Support:</strong></p>
+                <ul class="tips-list">
+                    <li>"This is really hard, and it's okay to struggle"</li>
+                    <li>"Your feelings are valid"</li>
+                    <li>"I'm here for you, whatever you're feeling"</li>
+                    <li>"Take your time to heal"</li>
+                </ul>
+                <p>Allow full range of emotions. Positivity is earned, not forced.</p>
+            </div>
+
+            <div class="card">
+                <h3>Microaggressions at Daily Harm</h3>
+                <p>Small, everyday discrimination na nag-aaccumulate:</p>
+                <ul class="tips-list">
+                    <li>"You're so articulate" (to minorities) - implies surprise</li>
+                    <li>"Sayang naman ang beauty/brains" - commenting on singlehood</li>
+                    <li>"Are you sure?" - doubting competence</li>
+                    <li>"You're too sensitive" - gaslighting</li>
+                    <li>"Where are you REALLY from?" - othering</li>
+                </ul>
+                <p><strong>Impact:</strong> Cumulative trauma, chronic stress, self-doubt, exhaustion</p>
+                <p><strong>Response:</strong> Name it, set boundary, seek community support. Your reaction is valid.</p>
+            </div>
+
+            <div class="card">
+                <h3>Climate Anxiety at Eco-Grief</h3>
+                <p>Anxiety about environmental crisis:</p>
+                <ul class="tips-list">
+                    <li>Fear for future generations</li>
+                    <li>Helplessness watching destruction</li>
+                    <li>Grief over species loss, natural disasters</li>
+                    <li>Guilt about carbon footprint</li>
+                    <li>Existential dread</li>
+                </ul>
+                <p><strong>Coping:</strong></p>
+                <ul class="tips-list">
+                    <li>Take action within your capacity</li>
+                    <li>Connect with environmental groups</li>
+                    <li>Balance awareness with self-care</li>
+                    <li>Focus on what you can control</li>
+                    <li>Allow yourself to grieve</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Infertility at Pregnancy Loss</h3>
+                <p>Often invisible grief na hindi napag-uusapan:</p>
+                <ul class="tips-list">
+                    <li>Societal pressure to have children</li>
+                    <li>Invasive questions: "Kailan kayo mag-aanak?"</li>
+                    <li>Feelings of inadequacy or broken</li>
+                    <li>Complicated grief from miscarriage</li>
+                    <li>Relationship strain</li>
+                    <li>Financial burden of treatments</li>
+                </ul>
+                <p><strong>Support:</strong> Allow grief. Join support groups. Set boundaries on baby topics. Seek counseling. Your path is valid kahit iba sa expectation.</p>
+            </div>
+
+            <div class="card">
+                <h3>Neurodivergence sa Pilipinas</h3>
+                <p>ADHD, Autism, Dyslexia - limited understanding dito:</p>
+                <ul class="tips-list">
+                    <li>Misdiagnosed as "tamad" or "pasaway"</li>
+                    <li>Lack of accommodations sa schools/work</li>
+                    <li>Stigma and misunderstanding</li>
+                    <li>Late diagnosis or no diagnosis at all</li>
+                    <li>Masking to fit in - exhausting</li>
+                </ul>
+                <p><strong>Advocacy:</strong> Seek proper assessment. Educate those around you. Find neurodivergent communities. Request accommodations - it's your right.</p>
+            </div>
+
+            <div class="card">
+                <h3>Empty Nest Syndrome</h3>
+                <p>Kapag umalis na ang mga anak:</p>
+                <ul class="tips-list">
+                    <li>Identity crisis - "Sino ako ngayon?"</li>
+                    <li>Loneliness and purposelessness</li>
+                    <li>Relationship strain with spouse</li>
+                    <li>Regret over missed moments</li>
+                    <li>Worry about children's independence</li>
+                </ul>
+                <p><strong>Transition:</strong> Rediscover hobbies. Reconnect with partner. Build new routines. Stay connected but respect boundaries. Find new purpose.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Incest (Covert Incest)</h3>
+                <p>Kapag parent ay nag-rely sa child for emotional support na dapat sa adult:</p>
+                <ul class="tips-list">
+                    <li>Sharing inappropriate details about relationships</li>
+                    <li>Making child a confidant about marital problems</li>
+                    <li>Jealousy ng parent sa relationships ng child</li>
+                    <li>Emotional dependency na unhealthy</li>
+                    <li>Blurred boundaries</li>
+                </ul>
+                <p><strong>Effects:</strong> Difficulty setting boundaries, guilt when living own life, codependency. Therapy helps reestablish healthy dynamics.</p>
+            </div>
+
+            <div class="card">
+                <h3>Disenfranchised Grief</h3>
+                <p>Grief na hindi recognized or validated ng society:</p>
+                <ul class="tips-list">
+                    <li>Death of pet - "It's just an animal"</li>
+                    <li>Miscarriage - "At least it was early"</li>
+                    <li>Ex-partner's death - "Pero wala na kayo"</li>
+                    <li>Job loss - "Find a new one"</li>
+                    <li>Breakup of friendship - "May bagong friends"</li>
+                </ul>
+                <p>Your grief is valid kahit hindi ito "traditional." Allow yourself to mourn.</p>
+            </div>
+
+            <div class="card">
+                <h3>Hustle Culture Toxicity</h3>
+                <p>"Grind mentality" na nakakasakit:</p>
+                <ul class="tips-list">
+                    <li>"Sleep is for the weak"</li>
+                    <li>"If you want it, you'll find a way"</li>
+                    <li>Glorifying overwork and burnout</li>
+                    <li>Guilt when resting</li>
+                    <li>Worth tied to productivity</li>
+                </ul>
+                <p><strong>Reality Check:</strong></p>
+                <ul class="tips-list">
+                    <li>Rest is productive</li>
+                    <li>You're human, not machine</li>
+                    <li>Success at cost of health isn't success</li>
+                    <li>Systemic barriers exist - not just lack of hustle</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Invisible Disabilities at Mental Health</h3>
+                <p>Conditions na hindi nakikita pero real ang impact:</p>
+                <ul class="tips-list">
+                    <li>"Hindi ka naman mukhang may sakit"</li>
+                    <li>Questioned legitimacy constantly</li>
+                    <li>Lack of accommodations</li>
+                    <li>Pressure to appear "normal"</li>
+                    <li>Guilt about limitations</li>
+                </ul>
+                <p><strong>Examples:</strong> Chronic pain, fatigue, mental illness, autoimmune conditions, sensory issues</p>
+                <p>Your struggle is valid kahit hindi visible. You don't owe anyone explanations.</p>
+            </div>
+
+            <div class="card">
+                <h3>Urban Loneliness sa Metro Manila</h3>
+                <p>Surrounded by millions pero feeling isolated:</p>
+                <ul class="tips-list">
+                    <li>Transactional relationships</li>
+                    <li>Commute exhaustion - no time for connection</li>
+                    <li>Everyone's "too busy"</li>
+                    <li>Anonymity in crowds</li>
+                    <li>Far from family and hometown</li>
+                    <li>Social media connection pero no real depth</li>
+                </ul>
+                <p><strong>Combat:</strong> Join interest-based communities, regular video calls with loved ones, therapy, volunteer work, coworking spaces.</p>
+            </div>
+
+            <div class="card">
+                <h3>Fertility Pressure sa Filipino Culture</h3>
+                <p>Constant questions and expectations:</p>
+                <ul class="tips-list">
+                    <li>"Kailan ka mag-aasawa?"</li>
+                    <li>"Kailan kayo mag-aanak?"</li>
+                    <li>"Sayang naman"</li>
+                    <li>"Biological clock mo"</li>
+                    <li>Assumptions about life choices</li>
+                </ul>
+                <p><strong>Responses:</strong></p>
+                <ul class="tips-list">
+                    <li>"That's personal, but thanks for your concern"</li>
+                    <li>"When we're ready, you'll know"</li>
+                    <li>Change subject</li>
+                    <li>Humor: "Next question please!"</li>
+                </ul>
+                <p>Your reproductive choices are YOURS alone.</p>
+            </div>
+
+            <div class="card">
+                <h3>Weaponized Incompetence sa Relationships</h3>
+                <p>Pretending incompetence to avoid responsibilities:</p>
+                <ul class="tips-list">
+                    <li>"Hindi ko alam paano" - pero never learns</li>
+                    <li>Does tasks badly para hindi na utusan</li>
+                    <li>Plays helpless</li>
+                    <li>Unequal domestic labor</li>
+                    <li>Usually gendered - men "can't" do household tasks</li>
+                </ul>
+                <p><strong>Address:</strong> Clear expectations, consequences, teaching once then expecting competence, therapy if pattern continues.</p>
+            </div>
+
+            <div class="card">
+                <h3>Generational Wealth Gaps</h3>
+                <p>Different realities causing family tension:</p>
+                <ul class="tips-list">
+                    <li>Parents bought house easily - now impossible for millennials/Gen Z</li>
+                    <li>"Bakit di ka pa nag-iipon?" - cost of living gap</li>
+                    <li>Job market completely different</li>
+                    <li>Mental health wasn't priority before</li>
+                    <li>"Ang arte mo" - different struggles</li>
+                </ul>
+                <p>Both struggles are valid. Context matters. Acknowledge differences with compassion.</p>
+            </div>
+
+            <div class="card">
+                <h3>Medical Gaslighting</h3>
+                <p>When doctors dismiss symptoms:</p>
+                <ul class="tips-list">
+                    <li>"It's just stress/anxiety"</li>
+                    <li>"Lose weight and you'll be fine"</li>
+                    <li>"It's all in your head"</li>
+                    <li>Dismissing pain, especially women's</li>
+                    <li>Not investigating further</li>
+                </ul>
+                <p><strong>Advocate:</strong> Bring companion, write symptoms down, ask for tests in writing, get second opinion, report to hospital admin if severe.</p>
+            </div>
+
+            <div class="card">
+                <h3>Spiritual Bypassing</h3>
+                <p>Using spirituality to avoid dealing with issues:</p>
+                <ul class="tips-list">
+                    <li>"Just pray about it" - avoiding therapy</li>
+                    <li>"God's plan" - excusing abuse</li>
+                    <li>"Positive vibes only" - toxic positivity</li>
+                    <li>Using faith to bypass accountability</li>
+                    <li>"Forgive and forget" - no boundaries</li>
+                </ul>
+                <p>Spirituality can support healing pero not replace necessary action. Faith AND therapy can coexist.</p>
+            </div>
+
+            <div class="card">
+                <h3>Eco-Anxiety sa Pilipinas</h3>
+                <p>Climate change hitting Philippines hard:</p>
+                <ul class="tips-list">
+                    <li>Super typhoons increasing</li>
+                    <li>Rising sea levels - existential threat</li>
+                    <li>Heat extremes</li>
+                    <li>Food security concerns</li>
+                    <li>Displacement fears</li>
+                </ul>
+                <p><strong>Cope:</strong> Community action, support climate organizations, prepare emergency plans, therapy, balance awareness with self-care.</p>
+            </div>
+
+            <div class="card">
+                <h3>Caregiver Sandwich Generation Burnout</h3>
+                <p>Caring for kids AND aging parents simultaneously:</p>
+                <ul class="tips-list">
+                    <li>Financial strain - two generations dependent</li>
+                    <li>Time squeeze - no personal time</li>
+                    <li>Emotional exhaustion</li>
+                    <li>Career impacts</li>
+                    <li>Health neglect</li>
+                    <li>Guilt sa lahat ng directions</li>
+                </ul>
+                <p><strong>Survival:</strong> Siblings meeting, divide responsibilities, hire help if possible, government elder care programs, respite care, therapy.</p>
+            </div>
+        </div>
+
+        <div id="emotions" class="content-section">
+            <div class="card">
+                <h3>Kilalanin ang Iyong Emosyon</h3>
+                <p>Lahat ng emosyon ay normal at may kahalagahan. Alamin kung ano ang nararamdaman mo:</p>
+            </div>
+
+            <div class="emotion-grid">
+                <div class="emotion-card">
+                    <div class="emotion-icon">😊</div>
+                    <div class="emotion-label">Masaya</div>
+                </div>
+                <div class="emotion-card">
+                    <div class="emotion-icon">😢</div>
+                    <div class="emotion-label">Malungkot</div>
+                </div>
+                <div class="emotion-card">
+                    <div class="emotion-icon">😰</div>
+                    <div class="emotion-label">Nag-aalala</div>
+                </div>
+                <div class="emotion-card">
+                    <div class="emotion-icon">😠</div>
+                    <div class="emotion-label">Galit</div>
+                </div>
+                <div class="emotion-card">
+                    <div class="emotion-icon">😨</div>
+                    <div class="emotion-label">Takot</div>
+                </div>
+                <div class="emotion-card">
+                    <div class="emotion-icon">😌</div>
+                    <div class="emotion-label">Kalmado</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Tanggapin ang Iyong Damdamin</h3>
+                <p>Walang "mali" o "tama" na emosyon. Lahat ay bahagi ng pagiging tao. Bigyan mo ng espasyo ang bawat damdamin na nararamdaman mo.</p>
+            </div>
+
+            <div class="card">
+                <h3>Paraan ng Pag-Express</h3>
+                <ul class="tips-list">
+                    <li>Magsulat sa journal o diary</li>
+                    <li>Makipag-usap sa taong pinagkakatiwalaan</li>
+                    <li>Gumuhit o lumikha ng art</li>
+                    <li>Mag-exercise o gumalaw</li>
+                    <li>Makinig ng music na tugma sa mood</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Malalim na Pag-unawa sa Emosyon</h3>
+                <p><strong>MASAYA (Joy/Happiness):</strong> Ang ligaya ay likas na kakayahan ng tao. Huwag pigilan ito dahil baka mag-isip ang iba na mayabang ka. Deserve mo maging masaya.</p>
+                <p><strong>MALUNGKOT (Sadness):</strong> Ang lungkot ay hindi kahinaan. Ito ay senyales na may nawala, may nasaktan, o may pagbabagong nangyari. Bigyan ng oras ang sarili na malungkot.</p>
+                <p><strong>GALIT (Anger):</strong> Ang galit ay nagpapakita na may nilalabag na boundaries mo o may injustice. Itama kung paano ito ilalabas - hindi sa panakit, kundi sa healthy na paraan.</p>
+                <p><strong>TAKOT (Fear):</strong> Ang takot ay proteksyon. Sinasabi nito na mag-ingat. Pero huwag hayaang kontrolin ka nito. Tanungin: totoo ba ang itinatakot ko o imahinasyon lang?</p>
+                <p><strong>NAG-AALALA (Anxiety):</strong> Normal ang mag-alala, pero kapag sobra na at nakakaabala sa buhay araw-araw, kailangan na ng tulong. Huwag maghintay na lumala pa.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Regulation</h3>
+                <p>Hindi ibig sabihin na dapat laging kontrolado ang emosyon. Ang emotional regulation ay:</p>
+                <ul class="tips-list">
+                    <li>Pagkilala sa emosyon bago ito sumakit</li>
+                    <li>Pag-unawa kung bakit ito nangyayari</li>
+                    <li>Pagpili ng tamang tugon (hindi impulsive)</li>
+                    <li>Pagtanggap na may mga emosyon na matagal mawala</li>
+                    <li>Pag-practice ng self-compassion habang nararamdaman</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Triggers</h3>
+                <p>Ang trigger ay mga bagay na biglang nagdudulot ng malakas na emosyon. Maaring:</p>
+                <ul class="tips-list">
+                    <li>Mga salita o tono ng boses</li>
+                    <li>Amoy, tunog, o lugar na nag-remind sa trauma</li>
+                    <li>Mga tao na nagpapaalala sa nakaraan</li>
+                    <li>Mga sitwasyon na dating nakasakit</li>
+                    <li>Panahon o petsa ng mahalagang event</li>
+                </ul>
+                <p>Kilalanin ang iyong mga trigger. Kapag alam mo na, mas magiging handa kang harapin ito.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mga Emosyon na Dapat Pansinin</h3>
+                <p><strong>Walang-gana (Apathy):</strong> Kapag wala ka nang pakialam sa anuman, ito ay warning sign ng depression.</p>
+                <p><strong>Numbness:</strong> Pakiramdam na wala ka nang nararamdaman. Ito ay coping mechanism ng utak kapag sobra na ang sakit.</p>
+                <p><strong>Hopelessness:</strong> Kapag wala ka nang nakikitang pag-asa sa kinabukasan, ito ay seryoso. Kailangan ng tulong agad.</p>
+                <p><strong>Guilt o Shame:</strong> Ang guilt ay "may ginawa akong mali." Ang shame ay "ako mismo ay mali." Ang pangalawa ay mas nakakapinsala at kailangan ng healing.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Vocabulary</h3>
+                <p>Minsan mahirap ipaliwanag ang nararamdaman. Narito ang mga salita na makakatulong:</p>
+                <p><strong>Pagod:</strong> drained, burnt out, exhausted, walang gana<br>
+                <strong>Lungkot:</strong> depressed, heartbroken, devastated, nag-iisa<br>
+                <strong>Galit:</strong> frustrated, irritated, furious, bitter, resentful<br>
+                <strong>Takot:</strong> anxious, worried, terrified, nervous, paranoid<br>
+                <strong>Saya:</strong> grateful, content, hopeful, excited, peaceful</p>
+            </div>
+
+            <div class="card">
+                <h3>Ang Tamang Pagpapahayag</h3>
+                <p>Gumamit ng "I feel" statements:</p>
+                <ul class="tips-list">
+                    <li>"Nararamdaman ko..." (hindi "Ikaw ang dahilan...")</li>
+                    <li>"Nasaktan ako ng..." (hindi "Sinaktan mo ako...")</li>
+                    <li>"Kailangan ko ng..." (hindi "Dapat mo akong...")</li>
+                    <li>"Gusto ko sanang..." (hindi "Bakit hindi mo...")</li>
+                </ul>
+                <p>Ang approach na ito ay mas nakaka-open ng communication kaysa pag-blame.</p>
+            </div>
+
+            <div class="card">
+                <h3>Complicated Emotions</h3>
+                <p>Minsan, sabay-sabay ang emotions at magulo. Ito ay normal:</p>
+                <p><strong>Grief:</strong> Pwedeng maramdaman both sadness at relief (lalo na sa toxic relationships o long illness)</p>
+                <p><strong>Nostalgia:</strong> Happy memory pero may sadness dahil tapos na</p>
+                <p><strong>Jealousy:</strong> Combination ng insecurity, fear, at anger</p>
+                <p><strong>Guilt:</strong> Pwedeng may regret pero may valid reasons din para sa ginawa mo</p>
+                <p><strong>Love-Hate:</strong> Mahal mo pero frustrated ka rin - common sa family dynamics</p>
+                <p>Huwag i-force na maging simple ang feelings. Okay lang na complex.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Validation vs Enabling</h3>
+                <p><strong>Validation:</strong> "I understand why you feel that way. Your feelings are valid."</p>
+                <p><strong>Enabling:</strong> "Oo nga, victim ka talaga. Wala kang magagawa dyan."</p>
+                <p>Validation acknowledges emotions without encouraging destructive behavior. Enabling supports harmful patterns.</p>
+            </div>
+
+            <div class="card">
+                <h3>Men at Emotions</h3>
+                <p>Sa kultura natin, mas lalo pang stigmatized ang men na nag-eexpress ng vulnerability. "Bawal umiyak," "Lalaki ka, hindi ka pwedeng malungkot."</p>
+                <ul class="tips-list">
+                    <li>Ang masculinity ay hindi measured sa pagkukulong ng emotions</li>
+                    <li>Crying is not weakness - it's human</li>
+                    <li>Asking for help is strength, not cowardice</li>
+                    <li>You can be strong AND emotionally expressive</li>
+                    <li>Mental health issues don't discriminate by gender</li>
+                </ul>
+                <p>Para sa mga men: deserve niyo ring mag-feel safe expressing yourselves.</p>
+            </div>
+
+            <div class="card">
+                <h3>Parentified Children</h3>
+                <p>Ito ay kapag ang bata ay naging "parent" sa sariling magulang or siblings dahil sa circumstances (poverty, absence, addiction, mental illness).</p>
+                <p><strong>Effects sa adulthood:</strong></p>
+                <ul class="tips-list">
+                    <li>Difficulty setting boundaries</li>
+                    <li>People-pleasing tendencies</li>
+                    <li>Feels responsible for everyone's emotions</li>
+                    <li>Struggles with receiving help</li>
+                    <li>Feels guilty prioritizing self</li>
+                </ul>
+                <p>Kung ikaw ay parentified child, alam mo na hindi ito kasalanan mo. You deserved a childhood. Healing is possible through therapy at self-compassion.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Unavailability</h3>
+                <p>Ito ay kapag taong importante sa buhay mo ay hindi emotionally present:</p>
+                <ul class="tips-list">
+                    <li>Ayaw mag-talk about feelings</li>
+                    <li>Dismissive sa emotions mo</li>
+                    <li>Avoids deep conversations</li>
+                    <li>Physically present pero emotionally absent</li>
+                    <li>Walang empathy o understanding</li>
+                </ul>
+                <p><strong>Paano Harapin:</strong></p>
+                <ul class="tips-list">
+                    <li>Communicate your needs clearly</li>
+                    <li>Set boundaries on what you can accept</li>
+                    <li>Accept na hindi mo siya mapipilitang magbago</li>
+                    <li>Find emotional support elsewhere</li>
+                    <li>Decide if relationship is still worth it</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Seasonal Depression</h3>
+                <p>Sa Pilipinas, walang traditional "winter depression" pero may seasonal patterns pa rin:</p>
+                <ul class="tips-list">
+                    <li><strong>Rainy Season:</strong> Lack of sunlight, flooding stress, isolation</li>
+                    <li><strong>Holiday Season:</strong> Family pressure, financial stress, loneliness</li>
+                    <li><strong>Back to School/Work:</strong> Transition anxiety</li>
+                    <li><strong>Anniversary Dates:</strong> Ng losses or trauma</li>
+                </ul>
+                <p>Recognize your patterns. Prepare coping strategies in advance.</p>
+            </div>
+
+            <div class="card">
+                <h3>High-Functioning Depression/Anxiety</h3>
+                <p>Maaaring successful ka sa labas pero suffering sa loob:</p>
+                <ul class="tips-list">
+                    <li>May work, productive, pero walang joy</li>
+                    <li>Smiling sa public, crying pag mag-isa</li>
+                    <li>Achieving pero feeling empty</li>
+                    <li>Functional pero exhausted palagi</li>
+                </ul>
+                <p>Just because you're "functioning" doesn't mean you're okay. Deserve mo pa rin ng help kahit hindi ka "bad enough."</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Flashbacks</h3>
+                <p>Different from memory flashbacks. Ito ay sudden overwhelming emotion na connected sa past trauma, pero hindi mo naalala bakit.</p>
+                <p><strong>Ano Gagawin:</strong></p>
+                <ul class="tips-list">
+                    <li>Ground yourself sa present (5-4-3-2-1 technique)</li>
+                    <li>Remind yourself: "This is a flashback, not happening now"</li>
+                    <li>Deep breathing to calm nervous system</li>
+                    <li>Reach out sa support person</li>
+                    <li>Journal to process kung saan galing</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Codependency</h3>
+                <p>Ito ay unhealthy attachment kung saan dependent ang worth mo sa iba:</p>
+                <p><strong>Signs:</strong></p>
+                <ul class="tips-list">
+                    <li>Walang identity outside the relationship</li>
+                    <li>Enabling destructive behavior para lang hindi ka iwanan</li>
+                    <li>Sacrificing everything para sa iba</li>
+                    <li>Fear of abandonment controls decisions</li>
+                    <li>Difficulty saying no</li>
+                </ul>
+                <p><strong>Path to Independence:</strong> Therapy, rediscovering hobbies, building separate identity, setting boundaries, healing root causes (usually childhood issues).</p>
+            </div>
+
+            <div class="card">
+                <h3>Body Image at Self-Esteem</h3>
+                <p>Sa Pilipinas, grabe ang pressure about physical appearance:</p>
+                <ul class="tips-list">
+                    <li>"Ang taba mo na" - body shaming as "concern"</li>
+                    <li>Colorism - preference for lighter skin</li>
+                    <li>Height comments - especially sa men</li>
+                    <li>Unrealistic beauty standards from media</li>
+                    <li>Comparison sa celebrities or influencers</li>
+                </ul>
+                <p><strong>Building Healthy Body Image:</strong></p>
+                <ul class="tips-list">
+                    <li>Unfollow accounts na nag-trigger ng insecurity</li>
+                    <li>Respect your body - it's keeping you alive</li>
+                    <li>Focus sa health, not appearance</li>
+                    <li>Challenge negative thoughts - "Says who?"</li>
+                    <li>Surround yourself with body-positive people</li>
+                    <li>Seek therapy if it's affecting daily life</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Imposter Syndrome</h3>
+                <p>Pakiramdam na fraud ka at hindi deserve ang achievements:</p>
+                <ul class="tips-list">
+                    <li>"Swerte lang ako" - discounting your hard work</li>
+                    <li>Fear of being "exposed" as incompetent</li>
+                    <li>Overworking to prove yourself</li>
+                    <li>Cannot accept compliments</li>
+                    <li>Comparing yourself to others constantly</li>
+                </ul>
+                <p><strong>Reality Check:</strong></p>
+                <ul class="tips-list">
+                    <li>You were chosen/hired/accepted for valid reasons</li>
+                    <li>Everyone feels this sometimes - even experts</li>
+                    <li>Acknowledge your skills and accomplishments</li>
+                    <li>Document your wins - read when doubting</li>
+                    <li>Talk about it - reduces power of shame</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>LGBTQ+ Mental Health</h3>
+                <p>Additional struggles dahil sa discrimination at stigma:</p>
+                <ul class="tips-list">
+                    <li>Family rejection at "conversion therapy"</li>
+                    <li>Discrimination sa work, school, society</li>
+                    <li>Internalized homophobia/transphobia</li>
+                    <li>Violence at hate crimes</li>
+                    <li>Lack of legal protections (SOGIE bill)</li>
+                    <li>Healthcare discrimination</li>
+                </ul>
+                <p><strong>Support:</strong> LoveYourself, Metro Manila Pride, LGBTQ+ affirming therapists, chosen family, online communities. You are valid. Your identity is not mental illness.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Burnout Signs</h3>
+                <p>Different from physical exhaustion - ito ay soul-deep:</p>
+                <ul class="tips-list">
+                    <li>Emotional numbness - wala nang nararamdaman</li>
+                    <li>Cynicism - negative view sa lahat</li>
+                    <li>Detachment - disconnected sa work, relationships, self</li>
+                    <li>Reduced performance despite trying hard</li>
+                    <li>Physical symptoms - headaches, insomnia, body pain</li>
+                    <li>Irritability at short temper</li>
+                </ul>
+                <p><strong>Recovery:</strong> Not just vacation. Need deep rest, boundaries, workload reduction, addressing root causes, possible career change.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Dysregulation</h3>
+                <p>Difficulty managing emotional responses:</p>
+                <p><strong>Manifests as:</strong></p>
+                <ul class="tips-list">
+                    <li>0 to 100 emotions quickly</li>
+                    <li>Disproportionate reactions</li>
+                    <li>Difficulty calming down</li>
+                    <li>Impulsive actions when upset</li>
+                    <li>Feeling out of control</li>
+                </ul>
+                <p><strong>Skills to Learn:</strong></p>
+                <ul class="tips-list">
+                    <li>Identify emotions early before escalation</li>
+                    <li>Pause technique - count to 10, breathe</li>
+                    <li>Distress tolerance skills (DBT)</li>
+                    <li>Regular mindfulness practice</li>
+                    <li>Therapy - especially DBT (Dialectical Behavior Therapy)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Vicarious Trauma</h3>
+                <p>Secondary trauma from hearing/witnessing others' traumatic experiences:</p>
+                <p><strong>Who's at Risk:</strong> Healthcare workers, social workers, journalists, first responders, therapists, volunteers</p>
+                <p><strong>Symptoms:</strong></p>
+                <ul class="tips-list">
+                    <li>Nightmares about others' stories</li>
+                    <li>Hypervigilance</li>
+                    <li>Emotional numbing</li>
+                    <li>Loss of hope in humanity</li>
+                    <li>Physical exhaustion</li>
+                </ul>
+                <p><strong>Prevention:</strong> Regular debriefing, clear boundaries, self-care, supervision/therapy, limit exposure to traumatic content.</p>
+            </div>
+
+            <div class="card">
+                <h3>Attachment Styles at Relationships</h3>
+                <p>Formed in childhood, affects adult relationships:</p>
+                <p><strong>Secure:</strong> Comfortable with intimacy and independence. Healthy relationships.</p>
+                <p><strong>Anxious:</strong> Fear of abandonment, clingy, needs constant reassurance.</p>
+                <p><strong>Avoidant:</strong> Fear of intimacy, emotionally distant, values independence over connection.</p>
+                <p><strong>Disorganized:</strong> Both wants and fears intimacy. Confused attachment.</p>
+                <p><strong>Good News:</strong> Attachment styles can change with awareness and work. Therapy helps.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Contagion</h3>
+                <p>Tendency to "catch" emotions from others:</p>
+                <ul class="tips-list">
+                    <li>Empaths especially vulnerable</li>
+                    <li>Can lead to emotional exhaustion</li>
+                    <li>Difficulty separating your feelings from others'</li>
+                    <li>Taking on others' stress as your own</li>
+                </ul>
+                <p><strong>Protection:</strong></p>
+                <ul class="tips-list">
+                    <li>Ground yourself before interacting</li>
+                    <li>Remind: "This is their emotion, not mine"</li>
+                    <li>Set time limits on emotional conversations</li>
+                    <li>Recharge alone time after heavy interactions</li>
+                    <li>Practice emotional boundaries</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Learned Helplessness</h3>
+                <p>Belief na wala kang control over situation kahit meron:</p>
+                <p><strong>Develops from:</strong> Repeated failures, abuse, poverty, oppressive environments</p>
+                <p><strong>Results in:</strong> Passivity, not trying anymore, depression, giving up easily</p>
+                <p><strong>Breaking Free:</strong></p>
+                <ul class="tips-list">
+                    <li>Start with small controllable actions</li>
+                    <li>Celebrate tiny wins</li>
+                    <li>Challenge thoughts: "Is it really impossible?"</li>
+                    <li>Build self-efficacy through mastery experiences</li>
+                    <li>Therapy to reprocess past experiences</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Alexithymia</h3>
+                <p>Difficulty identifying and expressing emotions:</p>
+                <p><strong>Symptoms:</strong></p>
+                <ul class="tips-list">
+                    <li>"I don't know how I feel"</li>
+                    <li>Confusing physical sensations with emotions</li>
+                    <li>Difficulty describing feelings to others</li>
+                    <li>Limited fantasy or imagination</li>
+                    <li>Externally focused thinking</li>
+                </ul>
+                <p><strong>Development:</strong> Emotion wheel practice, body scan awareness, therapy, journaling with prompts. Progress is possible.</p>
+            </div>
+
+            <div class="card">
+                <h3>Rejection Sensitive Dysphoria</h3>
+                <p>Extreme emotional response to perceived rejection:</p>
+                <ul class="tips-list">
+                    <li>Intense emotional pain from criticism</li>
+                    <li>Assuming worst in ambiguous situations</li>
+                    <li>People-pleasing to avoid rejection</li>
+                    <li>Overreacting to small comments</li>
+                    <li>Ruminating on interactions</li>
+                </ul>
+                <p>Common sa ADHD pero pwede sa lahat. Not oversensitivity - it's neurological. Awareness helps manage response.</p>
+            </div>
+
+            <div class="card">
+                <h3>Fawning Response</h3>
+                <p>4th trauma response (along with fight, flight, freeze):</p>
+                <p><strong>Manifests as:</strong></p>
+                <ul class="tips-list">
+                    <li>Over-pleasing others</li>
+                    <li>Ignoring own needs</li>
+                    <li>Difficulty saying no</li>
+                    <li>Chameleon-like adaptation</li>
+                    <li>Losing sense of self</li>
+                </ul>
+                <p><strong>Origin:</strong> Learned in childhood - keeping abuser happy = survival</p>
+                <p><strong>Recovery:</strong> Recognize pattern, set small boundaries, therapy, reparenting work</p>
+            </div>
+
+            <div class="card">
+                <h3>Avoidant Personality Disorder</h3>
+                <p>Beyond shyness - intense fear of rejection:</p>
+                <ul class="tips-list">
+                    <li>Avoiding social situations despite wanting connection</li>
+                    <li>Extreme fear of criticism</li>
+                    <li>Feelings of inadequacy</li>
+                    <li>Reluctance to take risks</li>
+                    <li>Preoccupied with being rejected</li>
+                </ul>
+                <p>Different from introversion or social anxiety. Professional diagnosis and treatment needed.</p>
+            </div>
+
+            <div class="card">
+                <h3>Splitting (Black-White Thinking)</h3>
+                <p>Seeing people/situations as all good or all bad:</p>
+                <ul class="tips-list">
+                    <li>"They're perfect" → "They're terrible"</li>
+                    <li>No middle ground or gray area</li>
+                    <li>Idealizing then devaluing quickly</li>
+                    <li>Difficulty with nuance</li>
+                </ul>
+                <p><strong>Common in:</strong> BPD, trauma survivors, anyone under stress</p>
+                <p><strong>Integration:</strong> Practice holding both - "They hurt me AND they care" can coexist</p>
+            </div>
+
+            <div class="card">
+                <h3>Anticipatory Anxiety</h3>
+                <p>Worrying about future events obsessively:</p>
+                <ul class="tips-list">
+                    <li>Can't enjoy present due to future worry</li>
+                    <li>Creating worst-case scenarios</li>
+                    <li>Physical symptoms before events</li>
+                    <li>Avoidance of situations</li>
+                </ul>
+                <p><strong>Management:</strong></p>
+                <ul class="tips-list">
+                    <li>Ground in present - "Right now, I'm safe"</li>
+                    <li>Challenge: "What's the evidence?"</li>
+                    <li>Exposure in small steps</li>
+                    <li>Mindfulness practices</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Selective Mutism</h3>
+                <p>Inability to speak in specific situations despite speaking in others:</p>
+                <p><strong>Not:</strong> Defiance, shyness, or choice</p>
+                <p><strong>Is:</strong> Anxiety disorder, often starts childhood</p>
+                <p><strong>Triggers:</strong> School, public places, unfamiliar people</p>
+                <p><strong>Treatment:</strong> Behavioral therapy, gradual exposure, never force to speak. Patience and understanding needed.</p>
+            </div>
+
+            <div class="card">
+                <h3>Maladaptive Daydreaming</h3>
+                <p>Excessive fantasy that interferes with daily life:</p>
+                <ul class="tips-list">
+                    <li>Hours spent in detailed fantasy worlds</li>
+                    <li>Preference for fantasy over reality</li>
+                    <li>Neglecting responsibilities</li>
+                    <li>Difficulty stopping</li>
+                    <li>Often triggered by music or repetitive movement</li>
+                </ul>
+                <p>Coping mechanism na naging problem. Therapy addresses underlying issues driving the escape.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Permanence Struggles</h3>
+                <p>Difficulty believing relationships persist when not actively engaging:</p>
+                <ul class="tips-list">
+                    <li>"Out of sight, out of mind" literally</li>
+                    <li>Constant need for reassurance</li>
+                    <li>Assuming people forgot about you</li>
+                    <li>Anxiety when messages aren't answered quickly</li>
+                </ul>
+                <p>Common sa ADHD and attachment trauma. External reminders help - photos, saved messages, scheduled check-ins.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Lability</h3>
+                <p>Rapid, intense mood swings:</p>
+                <ul class="tips-list">
+                    <li>Fine to crying in seconds</li>
+                    <li>Difficulty controlling emotional expression</li>
+                    <li>Emotions feel overwhelming</li>
+                    <li>Others see you as "too emotional"</li>
+                </ul>
+                <p><strong>Causes:</strong> Brain injury, stroke, MS, bipolar, BPD, ADHD, hormones</p>
+                <p><strong>Management:</strong> Medical evaluation, medication if needed, DBT skills, warning others about condition.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Cutoff</h3>
+                <p>Complete disconnection from family to cope:</p>
+                <ul class="tips-list">
+                    <li>No contact as boundary</li>
+                    <li>Last resort for safety</li>
+                    <li>Often misunderstood by society</li>
+                    <li>Guilt and grief even when necessary</li>
+                    <li>"But they're family" pressure</li>
+                </ul>
+                <p>Sometimes necessary for survival. Your mental health matters more than social expectations. Chosen family is valid.</p>
+            </div>
+
+            <div class="card">
+                <h3>Folie à Deux (Shared Psychotic Disorder)</h3>
+                <p>Delusions shared between two people:</p>
+                <ul class="tips-list">
+                    <li>Usually dominant person with psychosis</li>
+                    <li>Submissive person adopts beliefs</li>
+                    <li>Often in isolated relationships</li>
+                    <li>Can be family members or partners</li>
+                </ul>
+                <p>Rare pero serious. Separation usually helps secondary person recover. Professional intervention crucial.</p>
+            </div>
+
+            <div class="card">
+                <h3>Dissociative Identity Disorder (DID)</h3>
+                <p>Formerly "Multiple Personality Disorder":</p>
+                <ul class="tips-list">
+                    <li>Develops from severe childhood trauma</li>
+                    <li>Distinct identity states</li>
+                    <li>Memory gaps</li>
+                    <li>Not "split personality" - defense mechanism</li>
+                    <li>Highly stigmatized and misunderstood</li>
+                </ul>
+                <p>Controversial diagnosis. Requires specialized trauma therapy. Media portrayals often inaccurate.</p>
+            </div>
+
+            <div class="card">
+                <h3>Depersonalization-Derealization</h3>
+                <p>Feeling detached from self or reality:</p>
+                <p><strong>Depersonalization:</strong> "I'm watching myself from outside," robotic feeling</p>
+                <p><strong>Derealization:</strong> World feels unreal, dreamlike, distorted</p>
+                <p><strong>Triggers:</strong> Trauma, anxiety, drugs, stress</p>
+                <p><strong>Grounding helps:</strong> 5-4-3-2-1, cold water, strong scents, movement</p>
+            </div>
+
+            <div class="card">
+                <h3>Echolalia at Stimming</h3>
+                <p>Often misunderstood autistic behaviors:</p>
+                <p><strong>Echolalia:</strong> Repeating words/phrases - communication attempt or self-soothing</p>
+                <p><strong>Stimming:</strong> Repetitive movements (rocking, hand-flapping) - regulation, joy, or stress relief</p>
+                <p>Not "weird" - functional and valid. Suppressing causes distress. Accept and accommodate.</p>
+            </div>
+
+            <div class="card">
+                <h3>Anhedonia</h3>
+                <p>Inability to feel pleasure:</p>
+                <ul class="tips-list">
+                    <li>Nothing brings joy anymore</li>
+                    <li>Food tastes bland</li>
+                    <li>Music doesn't move you</li>
+                    <li>No interest in previously loved activities</li>
+                    <li>Emotional numbness</li>
+                </ul>
+                <p>Core symptom of depression. Not laziness - brain chemistry issue. Professional help needed.</p>
+            </div>
+
+            <div class="card">
+                <h3>Intrusive Thoughts</h3>
+                <p>Unwanted, disturbing thoughts that pop up:</p>
+                <ul class="tips-list">
+                    <li>Violent images</li>
+                    <li>Sexual thoughts</li>
+                    <li>Blasphemous ideas</li>
+                    <li>Fear of harming others</li>
+                </ul>
+                <p><strong>Important:</strong> Having thought ≠ wanting to act on it. Common in OCD, anxiety, PTSD. Don't engage with thought - let it pass like cloud. Therapy helps.</p>
+            </div>
+
+            <div class="card">
+                <h3>Flight of Ideas</h3>
+                <p>Rapid jumping between topics:</p>
+                <ul class="tips-list">
+                    <li>Racing thoughts</li>
+                    <li>Can't finish one idea before next</li>
+                    <li>Pressured speech</li>
+                    <li>Tangential connections</li>
+                </ul>
+                <p>Common in mania (bipolar), ADHD, anxiety. Different from normal conversation - can't be controlled. Needs professional evaluation.</p>
+            </div>
+        </div>
+
+        <div id="tips" class="content-section">
+            <div class="card">
+                <h3>Mga Payo para sa Emotional Safety</h3>
+                <ul class="tips-list">
+                    <li>Magtakda ng malinaw na boundaries sa mga relasyon</li>
+                    <li>Matutong magsabi ng "hindi" nang may respeto</li>
+                    <li>Hanapin ang mga taong sumusuporta sa iyo</li>
+                    <li>Regular na mag-check in sa sarili</li>
+                    <li>Mag-practice ng self-compassion</li>
+                    <li>Humingi ng tulong kapag kailangan</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Breathing Exercise</h3>
+                <p><strong>4-7-8 Breathing Technique:</strong></p>
+                <p>1. Huminga ng malalim sa ilong (4 counts)<br>
+                2. Pigilan ang hininga (7 counts)<br>
+                3. Huminga nang dahan-dahan sa bibig (8 counts)<br>
+                4. Ulitin 3-4 beses</p>
+            </div>
+
+            <div class="card">
+                <h3>Grounding Technique (5-4-3-2-1)</h3>
+                <p>Kapag nag-aalala o stressed, gamitin ang 5 senses:</p>
+                <ul class="tips-list">
+                    <li>5 bagay na nakikita mo</li>
+                    <li>4 bagay na mahawakan mo</li>
+                    <li>3 bagay na naririnig mo</li>
+                    <li>2 bagay na naamoy mo</li>
+                    <li>1 bagay na nalasahan mo</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Daily Self-Care Checklist</h3>
+                <ul class="tips-list">
+                    <li>Matulog ng sapat (7-9 oras)</li>
+                    <li>Kumain ng masustansyang pagkain</li>
+                    <li>Mag-ehersisyo kahit 15-30 minuto</li>
+                    <li>Makipag-ugnayan sa mga mahal sa buhay</li>
+                    <li>Gumawa ng bagay na nagpapasaya</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Boundary Setting Guide</h3>
+                <p><strong>Ano ang Boundaries?</strong> Ito ay mga hangganan na inilalagay mo para protektahan ang iyong emotional, mental, at physical well-being.</p>
+                <p><strong>Mga Uri ng Boundaries:</strong></p>
+                <ul class="tips-list">
+                    <li><strong>Physical:</strong> Personal space, pagpayag sa physical touch</li>
+                    <li><strong>Emotional:</strong> Paghihiwalay ng emosyon mo sa iba</li>
+                    <li><strong>Time:</strong> Kung paano mo ginugugol ang oras</li>
+                    <li><strong>Material:</strong> Mga gamit at pera</li>
+                    <li><strong>Mental:</strong> Respeto sa iyong opinyon at beliefs</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Paano Magsabi ng "Hindi"</h3>
+                <ul class="tips-list">
+                    <li>"Salamat sa offer, pero hindi ako puwede ngayon."</li>
+                    <li>"Hindi ko kaya gawin yan dahil may priority ako."</li>
+                    <li>"Pasensya na, pero hindi ako komportable diyan."</li>
+                    <li>"Hindi ko kayang i-commit, ayoko kang biguin."</li>
+                    <li>"Salamat sa tiwala, pero hindi ko expertise yan."</li>
+                </ul>
+                <p>Hindi kailangan ng malaking explanation. Ang "hindi" ay kumpletong pangungusap.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mga Morning Routine para sa Mental Health</h3>
+                <ul class="tips-list">
+                    <li>Iwasan tingnan agad ang phone pagkagising</li>
+                    <li>Uminom ng tubig (hydration)</li>
+                    <li>5 minutes ng stretching o gentle movement</li>
+                    <li>Gratitude practice: 3 bagay na ikina-grateful mo</li>
+                    <li>Magtakda ng positive intention para sa araw</li>
+                    <li>Kumain ng masustansyang almusal</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Evening Wind-Down Routine</h3>
+                <ul class="tips-list">
+                    <li>1 oras bago matulog, bawasan ang screen time</li>
+                    <li>Mag-journal ng mga nangyari sa araw</li>
+                    <li>Mag-reflect: "Ano ang nag-go well? Ano ang challenge?"</li>
+                    <li>Gumawa ng to-do list para bukas (para hindi isipin)</li>
+                    <li>Relaxing activity: magbasa, tea, light music</li>
+                    <li>Matulog sa consistent na oras</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Stress Management Techniques</h3>
+                <p><strong>Progressive Muscle Relaxation:</strong></p>
+                <p>1. Magsimula sa paa - tensionin ng 5 seconds, then release<br>
+                2. Umakyat pataas: legs, stomach, chest, arms, face<br>
+                3. Habang nire-release, imagine na lumalabas ang stress</p>
+                <p><strong>Box Breathing (para sa panic attacks):</strong></p>
+                <p>Breathe in (4), Hold (4), Breathe out (4), Hold (4). Ulitin hanggang kumalma.</p>
+            </div>
+
+            <div class="card">
+                <h3>Cognitive Reframing</h3>
+                <p>Baguhin ang negative thoughts sa realistic at helpful:</p>
+                <ul class="tips-list">
+                    <li>❌ "Palaging ako nabibigo" → ✅ "May times na hindi ko naaabot, pero natututo ako"</li>
+                    <li>❌ "Lahat ay galit sa akin" → ✅ "May ilang tao na hindi agree, pero hindi lahat"</li>
+                    <li>❌ "Wala akong silbi" → ✅ "May mga strengths ako na di ko pa lubos napapakita"</li>
+                    <li>❌ "Dapat perpekto" → ✅ "Ang tao ay hindi perpekto, at okay lang yan"</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Social Support System</h3>
+                <p>Build your circle of support:</p>
+                <ul class="tips-list">
+                    <li><strong>Inner Circle:</strong> 1-3 tao na alam lahat, trusted completely</li>
+                    <li><strong>Middle Circle:</strong> Friends at family na close mo</li>
+                    <li><strong>Outer Circle:</strong> Acquaintances, workmates, casual friends</li>
+                    <li><strong>Professional:</strong> Therapist, counselor, life coach</li>
+                    <li><strong>Community:</strong> Support groups, church, organizations</li>
+                </ul>
+                <p>Huwag iasa ang lahat sa isang tao. May iba't ibang uri ng support na kailangan natin.</p>
+            </div>
+
+            <div class="card">
+                <h3>Digital Wellbeing</h3>
+                <ul class="tips-list">
+                    <li>Set time limits sa social media (30 min - 1 hour max)</li>
+                    <li>Unfollow accounts na nagti-trigger ng negative emotions</li>
+                    <li>May "digital detox" days (walang phone kahit 4-6 hours)</li>
+                    <li>Huwag mag-scroll bago matulog o pagkagising</li>
+                    <li>Turn off non-essential notifications</li>
+                    <li>Curate feed mo - mas maraming positive at inspiring content</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Mindfulness Practices</h3>
+                <p><strong>Mindful Eating:</strong> Dahan-dahanin ang pagkain. Lasahan, amuyin, damhin ang texture. Walang distractions.</p>
+                <p><strong>Mindful Walking:</strong> Habang naglalakad, damhin ang bawat hakbang, simoy ng hangin, tunog sa paligid.</p>
+                <p><strong>Body Scan:</strong> Habang nakahiga, focus sa bawat parte ng katawan from head to toe. Relax ang tense areas.</p>
+                <p><strong>5-Minute Meditation:</strong> Umupo, eyes closed, focus sa breathing. Kapag nag-wander ang isip, balik sa hininga.</p>
+            </div>
+
+            <div class="card">
+                <h3>Self-Compassion Practice</h3>
+                <p>Kausapin ang sarili tulad ng kaibigan:</p>
+                <ul class="tips-list">
+                    <li>Kapag nagkamali: "Okay lang yan, tao ka lang. Ano ang matututunan ko?"</li>
+                    <li>Kapag nahihirapan: "Mahirap talaga ito. Deserve ko ng pahinga."</li>
+                    <li>Kapag may insecurity: "Hindi perfection ang goal. Progress lang."</li>
+                    <li>Kapag may rejection: "Hindi reflection sa worth ko. May mas suitable para sa akin."</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Emergency Coping Strategies</h3>
+                <p>Kapag sobrang overwhelmed at kailangan ng immediate relief:</p>
+                <ul class="tips-list">
+                    <li><strong>Cold Water:</strong> Hugasan ang mukha ng malamig na tubig o holding ice</li>
+                    <li><strong>Movement:</strong> Jumping jacks, quick walk, dance to release energy</li>
+                    <li><strong>Grounding:</strong> Touch something textured, stamp feet, squeeze a stress ball</li>
+                    <li><strong>Scent:</strong> Amoy ng essential oil, coffee, flowers</li>
+                    <li><strong>Sound:</strong> Favorite song, nature sounds, calming playlist</li>
+                    <li><strong>Safe Person:</strong> Tawagan ang trusted friend or family</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Anger Management</h3>
+                <p>Ang galit ay normal. Ang problema ay kung paano ito inilalabas.</p>
+                <p><strong>Healthy Outlets:</strong></p>
+                <ul class="tips-list">
+                    <li>Intense physical activity (boxing, running, cleaning)</li>
+                    <li>Write angry letter pero huwag ipadala - rip it after</li>
+                    <li>Scream sa unan o sa car (isolated place)</li>
+                    <li>Identify root cause: hurt? Fear? Frustration?</li>
+                    <li>Take timeout bago mag-respond</li>
+                    <li>Use "I feel angry because..." statements</li>
+                </ul>
+                <p><strong>Red Flags na Kailangan ng Help:</strong></p>
+                <ul class="tips-list">
+                    <li>Violence towards people, animals, or objects</li>
+                    <li>Cannot control anger at all</li>
+                    <li>Anger affects work, school, relationships</li>
+                    <li>Others are afraid of your anger</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Dealing with Grief and Loss</h3>
+                <p><strong>5 Stages of Grief (hindi linear):</strong></p>
+                <ul class="tips-list">
+                    <li><strong>Denial:</strong> "Hindi totoo ito"</li>
+                    <li><strong>Anger:</strong> "Bakit ako? Hindi fair!"</li>
+                    <li><strong>Bargaining:</strong> "Sana kung ginawa ko...", "What if..."</li>
+                    <li><strong>Depression:</strong> Deep sadness, withdrawal</li>
+                    <li><strong>Acceptance:</strong> Coming to terms, moving forward</li>
+                </ul>
+                <p>Hindi lahat dadaan sa lahat ng stages. Pwedeng bumalik sa previous stage. No timeline sa grief.</p>
+                <p><strong>Complicated Grief:</strong> Kapag stuck ka at hindi makamove forward after long time, seek help.</p>
+            </div>
+
+            <div class="card">
+                <h3>Building Emotional Resilience</h3>
+                <p>Resilience ay ability to bounce back from adversity:</p>
+                <ul class="tips-list">
+                    <li><strong>Growth Mindset:</strong> See challenges as opportunities to learn</li>
+                    <li><strong>Flexible Thinking:</strong> Adapt to changes, multiple solutions</li>
+                    <li><strong>Self-Awareness:</strong> Know your triggers, strengths, weaknesses</li>
+                    <li><strong>Social Connections:</strong> Strong support system</li>
+                    <li><strong>Purpose:</strong> May meaning ang life beyond struggles</li>
+                    <li><strong>Self-Care:</strong> Physical and mental health priority</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Perfectionism at Mental Health</h3>
+                <p>Ang perfectionism ay may positive side (excellence) pero may dark side din:</p>
+                <p><strong>Unhealthy Perfectionism:</strong></p>
+                <ul class="tips-list">
+                    <li>Paralyzed by fear of failure</li>
+                    <li>All-or-nothing thinking</li>
+                    <li>Self-worth tied to achievements</li>
+                    <li>Cannot enjoy success, laging kulang</li>
+                    <li>Procrastination dahil takot hindi perfect</li>
+                </ul>
+                <p><strong>Paano Labanan:</strong></p>
+                <ul class="tips-list">
+                    <li>Aim for "good enough" instead of perfect</li>
+                    <li>Celebrate small wins</li>
+                    <li>Learn from mistakes without self-criticism</li>
+                    <li>Set realistic standards</li>
+                    <li>Practice self-compassion</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Sleep Hygiene para sa Mental Health</h3>
+                <ul class="tips-list">
+                    <li>Consistent sleep schedule (weekends included)</li>
+                    <li>No caffeine 6 hours before sleep</li>
+                    <li>Dark, cool, quiet room</li>
+                    <li>No screens 1 hour before bed (or use blue light filter)</li>
+                    <li>Relaxing pre-sleep routine (reading, meditation)</li>
+                    <li>Use bed for sleep only, not work/phone scrolling</li>
+                    <li>If cannot sleep after 20 min, get up and do calming activity</li>
+                </ul>
+                <p>Insomnia ay often symptom ng anxiety/depression. Address root cause din.</p>
+            </div>
+
+            <div class="card">
+                <h3>Nutrition at Mental Health</h3>
+                <p>Ang pagkain affects brain chemistry:</p>
+                <ul class="tips-list">
+                    <li><strong>Omega-3:</strong> Fish, nuts - good for depression</li>
+                    <li><strong>Complex Carbs:</strong> Brown rice, oats - stable mood</li>
+                    <li><strong>Protein:</strong> Steady energy, neurotransmitter production</li>
+                    <li><strong>Probiotics:</strong> Gut health = mental health (yogurt, kimchi)</li>
+                    <li><strong>Hydration:</strong> Dehydration affects mood and cognition</li>
+                    <li><strong>Limit:</strong> Sugar, processed food, alcohol, excessive caffeine</li>
+                </ul>
+                <p>Hindi cure-all, pero tumutulong sa overall wellness.</p>
+            </div>
+
+            <div class="card">
+                <h3>Exercise as Mental Health Tool</h3>
+                <p>Exercise releases endorphins (natural antidepressant):</p>
+                <ul class="tips-list">
+                    <li><strong>Cardio:</strong> Running, swimming - reduces anxiety</li>
+                    <li><strong>Yoga:</strong> Mind-body connection, stress relief</li>
+                    <li><strong>Strength Training:</strong> Boosts confidence, releases tension</li>
+                    <li><strong>Walking:</strong> Simple pero effective, especially in nature</li>
+                    <li><strong>Dancing:</strong> Joy + movement + expression</li>
+                </ul>
+                <p>Hindi kailangan intense. Even 15-30 minutes a day makes difference.</p>
+            </div>
+
+            <div class="card">
+                <h3>Creative Expression as Therapy</h3>
+                <ul class="tips-list">
+                    <li><strong>Art:</strong> Drawing, painting - walang rules, just express</li>
+                    <li><strong>Writing:</strong> Poetry, stories, letters you won't send</li>
+                    <li><strong>Music:</strong> Play instrument, sing, create playlist</li>
+                    <li><strong>Dance/Movement:</strong> Embodied expression</li>
+                    <li><strong>Crafts:</strong> Knitting, origami - meditative repetition</li>
+                </ul>
+                <p>Hindi about being "good" - about process, not product. Outlet for emotions na hindi kayang sabihin sa words.</p>
+            </div>
+
+            <div class="card">
+                <h3>Nature Therapy (Ecotherapy)</h3>
+                <p>Proven benefits ng nature sa mental health:</p>
+                <ul class="tips-list">
+                    <li>Walk sa park o garden - reduces stress hormones</li>
+                    <li>Gardening - grounding, purposeful activity</li>
+                    <li>Forest bathing (shinrin-yoku) - immersion sa nature</li>
+                    <li>Beach therapy - sound of waves is naturally calming</li>
+                    <li>Outdoor exercise - mas effective than indoor</li>
+                </ul>
+                <p>Kahit 20 minutes sa nature may significant impact sa mood.</p>
+            </div>
+
+            <div class="card">
+                <h3>Gratitude Practice</h3>
+                <p>Proven na nag-rewire ng brain towards positivity:</p>
+                <ul class="tips-list">
+                    <li>Every night, write 3 things you're grateful for</li>
+                    <li>Be specific - "grateful for coffee" vs "grateful na may kumain ako ng masarap na breakfast with family"</li>
+                    <li>Include small things - sunset, good song, comfortable bed</li>
+                    <li>Say thank you to people directly</li>
+                    <li>Reflect on challenges na naging blessings in disguise</li>
+                </ul>
+                <p>Hindi toxic positivity - pwedeng mag-coexist ang gratitude at struggle.</p>
+            </div>
+
+            <div class="card">
+                <h3>Setting Intentions vs Goals</h3>
+                <p><strong>Goals:</strong> Outcome-focused. "I want to lose 10 lbs."</p>
+                <p><strong>Intentions:</strong> Process-focused. "I intend to honor my body."</p>
+                <p>Intentions are kinder to mental health:</p>
+                <ul class="tips-list">
+                    <li>Less pressure, more self-compassion</li>
+                    <li>Focus on present moment, not future achievement</li>
+                    <li>Values-driven, not performance-driven</li>
+                    <li>Flexible, adaptable to life changes</li>
+                </ul>
+                <p>Examples: "I intend to be present," "I intend to speak kindly to myself," "I intend to rest when needed."</p>
+            </div>
+
+            <div class="card">
+                <h3>Reparenting Yourself</h3>
+                <p>Kung kulang ang nurturing noon, pwede mo bigyan ang sarili mo ngayon:</p>
+                <ul class="tips-list">
+                    <li>Give yourself permission to play, rest, enjoy</li>
+                    <li>Set healthy boundaries na hindi mo natutunan noon</li>
+                    <li>Validate your own emotions</li>
+                    <li>Celebrate your wins, no matter how small</li>
+                    <li>Comfort yourself when upset (self-soothing)</li>
+                    <li>Provide security - financial, emotional, physical</li>
+                </ul>
+                <p>Ask: "Ano ang need ng inner child ko ngayon?" Then provide it.</p>
+            </div>
+
+            <div class="card">
+                <h3>Letting Go ng People Pleasing</h3>
+                <ul class="tips-list">
+                    <li>Recognize: People pleasing = trauma response, not kindness</li>
+                    <li>Understand: You cannot control others' reactions</li>
+                    <li>Accept: Some people will be disappointed, and that's okay</li>
+                    <li>Practice: Say no to small things first</li>
+                    <li>Remember: Your needs matter as much as others'</li>
+                    <li>Notice: Real friends respect boundaries</li>
+                </ul>
+                <p>Magaan ang feeling kapag hindi na obligation ang lahat.</p>
+            </div>
+
+            <div class="card">
+                <h3>Cognitive Distortions</h3>
+                <p>Unhelpful thinking patterns na nag-worsen ng emotions:</p>
+                <ul class="tips-list">
+                    <li><strong>All-or-Nothing:</strong> "Kung hindi perfect, failure" → May gray area</li>
+                    <li><strong>Overgeneralization:</strong> "Palaging ganyan" → Hindi lahat ng situations pareho</li>
+                    <li><strong>Mental Filter:</strong> Focus lang sa negative → May positive din na nangyari</li>
+                    <li><strong>Catastrophizing:</strong> "Worst case scenario mangyayari" → Usually hindi naman</li>
+                    <li><strong>Mind Reading:</strong> "Alam kong galit siya sa akin" → Ask instead of assume</li>
+                    <li><strong>Should Statements:</strong> "Dapat ganito ako" → Says who?</li>
+                </ul>
+                <p>Challenge these thoughts. Ask: "Where's the evidence?"</p>
+            </div>
+
+            <div class="card">
+                <h3>Healthy vs Unhealthy Coping</h3>
+                <p><strong>Unhealthy (Short-term relief, long-term harm):</strong></p>
+                <ul class="tips-list">
+                    <li>Substance abuse (alcohol, drugs)</li>
+                    <li>Binge eating or restrictive eating</li>
+                    <li>Excessive shopping or gambling</li>
+                    <li>Self-harm</li>
+                    <li>Lashing out at others</li>
+                    <li>Complete avoidance/isolation</li>
+                </ul>
+                <p><strong>Healthy (Sustainable, addresses root):</strong></p>
+                <ul class="tips-list">
+                    <li>Talking to trusted person</li>
+                    <li>Physical activity</li>
+                    <li>Creative expression</li>
+                    <li>Mindfulness and meditation</li>
+                    <li>Problem-solving and planning</li>
+                    <li>Professional help when needed</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Window of Tolerance</h3>
+                <p>Optimal zone kung saan kaya mong i-handle ang stress:</p>
+                <p><strong>Hyperarousal (Above window):</strong> Anxiety, panic, anger, overwhelm</p>
+                <p><strong>Window of Tolerance:</strong> Calm, grounded, can think clearly</p>
+                <p><strong>Hypoarousal (Below window):</strong> Numb, depressed, shutdown, disconnected</p>
+                <p><strong>Goal:</strong> Expand window through regulation skills. When outside, use grounding to return.</p>
+            </div>
+
+            <div class="card">
+                <h3>Therapeutic Journaling Prompts</h3>
+                <p>Deep questions for self-reflection:</p>
+                <ul class="tips-list">
+                    <li>"Ano ang current ko na feelings at bakit?"</li>
+                    <li>"Anong patterns ang napapansin ko sa behavior ko?"</li>
+                    <li>"Ano ang need kong marinig ngayon?"</li>
+                    <li>"Ano ang mga bagay na under my control?"</li>
+                    <li>"Paano ko ma-honor ang sarili ko today?"</li>
+                    <li>"Ano ang boundaries na kailangan kong iset?"</li>
+                    <li>"Ano ang fears ko at saan galing?"</li>
+                    <li>"Paano ako sa 10 years? Ano gusto ko maging?"</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Radical Acceptance</h3>
+                <p>Accepting reality as it is, not as you wish it to be:</p>
+                <p><strong>Hindi ibig sabihin:</strong> Approval, agreement, or giving up</p>
+                <p><strong>Ibig sabihin:</strong> Acknowledging reality para makamove forward</p>
+                <p><strong>Practice:</strong></p>
+                <ul class="tips-list">
+                    <li>"This is the reality right now"</li>
+                    <li>"I cannot change the past"</li>
+                    <li>"Fighting reality only adds suffering"</li>
+                    <li>"I can accept AND still work for change"</li>
+                </ul>
+                <p>Powerful tool laban sa bitterness, resentment, stuck feeling.</p>
+            </div>
+
+            <div class="card">
+                <h3>Compassion Fatigue sa Caregivers</h3>
+                <p>Kapag ang pag-aalaga sa iba ay nag-drain completely:</p>
+                <p><strong>Symptoms:</strong></p>
+                <ul class="tips-list">
+                    <li>Emotional exhaustion</li>
+                    <li>Reduced empathy</li>
+                    <li>Resentment towards care recipient</li>
+                    <li>Neglecting own needs</li>
+                    <li>Physical symptoms - headaches, insomnia</li>
+                </ul>
+                <p><strong>Recovery:</strong> Ask for help, respite care, therapy, support groups, remember you're human too. Caring for yourself enables better care for others.</p>
+            </div>
+
+            <div class="card">
+                <h3>Nervous System Regulation</h3>
+                <p>Understanding your body's stress response:</p>
+                <p><strong>Sympathetic (Fight/Flight):</strong> Heart racing, tense, alert</p>
+                <p><strong>Parasympathetic (Rest/Digest):</strong> Calm, relaxed, safe</p>
+                <p><strong>Regulation Techniques:</strong></p>
+                <ul class="tips-list">
+                    <li>Cold water on face (activates vagus nerve)</li>
+                    <li>Deep belly breathing</li>
+                    <li>Humming or singing</li>
+                    <li>Gentle movement or stretching</li>
+                    <li>Progressive muscle relaxation</li>
+                    <li>Safe person's presence</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Emotional Vocabulary Building</h3>
+                <p>Mas maraming words for emotions = better emotional intelligence:</p>
+                <p><strong>Beyond "Sad":</strong> Disappointed, heartbroken, grieving, melancholic, hopeless, lonely</p>
+                <p><strong>Beyond "Angry":</strong> Frustrated, annoyed, furious, resentful, bitter, irritated</p>
+                <p><strong>Beyond "Happy":</strong> Content, joyful, grateful, peaceful, excited, hopeful</p>
+                <p><strong>Beyond "Scared":</strong> Anxious, terrified, nervous, worried, panicked, uneasy</p>
+                <p>Practice naming specific emotions. It helps regulate them.</p>
+            </div>
+
+            <div class="card">
+                <h3>Validation Statements</h3>
+                <p>Phrases to validate others (or yourself):</p>
+                <ul class="tips-list">
+                    <li>"That makes sense given what you're going through"</li>
+                    <li>"I understand why you'd feel that way"</li>
+                    <li>"Your feelings are valid"</li>
+                    <li>"Anyone in your situation would struggle"</li>
+                    <li>"I hear you and I believe you"</li>
+                    <li>"That sounds really difficult"</li>
+                    <li>"It's okay to not be okay right now"</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Somatic Practices</h3>
+                <p>Body-based approaches to emotional healing:</p>
+                <ul class="tips-list">
+                    <li><strong>Body Scan:</strong> Notice sensations without judgment</li>
+                    <li><strong>Somatic Experiencing:</strong> Release trauma stored in body</li>
+                    <li><strong>TRE (Trauma Release Exercises):</strong> Shaking to discharge stress</li>
+                    <li><strong>Dance/Movement Therapy:</strong> Express through motion</li>
+                    <li><strong>Breathwork:</strong> Various breathing patterns for regulation</li>
+                </ul>
+                <p>The body keeps score. Healing isn't just mental - it's physical too.</p>
+            </div>
+
+            <div class="card">
+                <h3>Reframing Negative Self-Talk</h3>
+                <p>Transform inner critic to inner coach:</p>
+                <ul class="tips-list">
+                    <li>❌ "I'm so stupid" → ✅ "I made a mistake and I can learn from it"</li>
+                    <li>❌ "Nobody likes me" → ✅ "Not everyone will like me, and that's okay"</li>
+                    <li>❌ "I can't do anything right" → ✅ "This is challenging but I've overcome challenges before"</li>
+                    <li>❌ "I'm worthless" → ✅ "I'm having a hard time, which doesn't define my worth"</li>
+                </ul>
+                <p>Would you talk to a friend that way? Extend same kindness to yourself.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mental Load Management</h3>
+                <p>Invisible cognitive labor ng pag-manage ng everything:</p>
+                <p><strong>Examples:</strong> Remembering appointments, planning meals, tracking supplies, coordinating schedules, anticipating needs</p>
+                <p><strong>Solution:</strong></p>
+                <ul class="tips-list">
+                    <li>Share mental load - delegate, don't just assign tasks</li>
+                    <li>Use external systems - calendars, lists, apps</li>
+                    <li>Communicate clearly what you're managing</li>
+                    <li>Say no to non-essential tasks</li>
+                    <li>Schedule downtime for brain rest</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Seasonal Self-Care Adjustments</h3>
+                <p><strong>Rainy Season:</strong> Extra Vitamin D, indoor activities ready, waterproof plans</p>
+                <p><strong>Hot Season:</strong> Hydration, cool spaces, adjust exercise timing</p>
+                <p><strong>Holiday Season:</strong> Budget early, set family boundaries, alone time scheduled</p>
+                <p><strong>Anniversary Dates:</strong> Plan ahead, support system alerted, gentle days</p>
+                <p>Anticipate challenges. Prepare self-care strategies in advance.</p>
+            </div>
+
+            <div class="card">
+                <h3>Sensory Self-Soothing Kit</h3>
+                <p>Create personalized kit using 5 senses:</p>
+                <ul class="tips-list">
+                    <li><strong>Touch:</strong> Soft blanket, stress ball, smooth stone</li>
+                    <li><strong>Sight:</strong> Photos, calming colors, nature images</li>
+                    <li><strong>Sound:</strong> Playlist, white noise, nature sounds</li>
+                    <li><strong>Smell:</strong> Essential oils, coffee beans, flowers</li>
+                    <li><strong>Taste:</strong> Mints, gum, favorite tea, chocolate</li>
+                </ul>
+                <p>Keep accessible for moments of distress. Engages nervous system to calm down.</p>
+            </div>
+
+            <div class="card">
+                <h3>HALT Check-In</h3>
+                <p>Before reacting, check if you're:</p>
+                <ul class="tips-list">
+                    <li><strong>H</strong>ungry - Low blood sugar affects mood</li>
+                    <li><strong>A</strong>ngry - Underlying frustration needs addressing</li>
+                    <li><strong>L</strong>onely - Need for connection</li>
+                    <li><strong>T</strong>ired - Exhaustion amplifies emotions</li>
+                </ul>
+                <p>Address basic needs first. Emotions are often more manageable after.</p>
+            </div>
+
+            <div class="card">
+                <h3>Energy Accounting</h3>
+                <p>Manage limited energy like a budget:</p>
+                <p><strong>Spoon Theory:</strong> Limited spoons each day. Tasks cost spoons.</p>
+                <ul class="tips-list">
+                    <li>High-energy tasks = more spoons</li>
+                    <li>Low-energy tasks = fewer spoons</li>
+                    <li>Some days you have fewer spoons total</li>
+                    <li>Prioritize what matters most</li>
+                    <li>Learn to say no when out of spoons</li>
+                </ul>
+                <p>Especially helpful for chronic illness, depression, burnout.</p>
+            </div>
+
+            <div class="card">
+                <h3>Opposite Action Technique</h3>
+                <p>DBT skill - do opposite of emotion urge when unhelpful:</p>
+                <ul class="tips-list">
+                    <li>Anxious → Approach what you avoid</li>
+                    <li>Depressed → Activate instead of isolate</li>
+                    <li>Angry → Gentle actions, soft voice</li>
+                    <li>Shame → Share instead of hide</li>
+                    <li>Fear → Face gradually</li>
+                </ul>
+                <p>Not about suppressing - about preventing emotion from controlling you.</p>
+            </div>
+
+            <div class="card">
+                <h3>Values-Based Living</h3>
+                <p>Align actions with core values:</p>
+                <p><strong>Identify Values:</strong> Family, creativity, justice, learning, etc.</p>
+                <p><strong>Rate Alignment:</strong> 1-10 kung gaano ka aligned sa each value</p>
+                <p><strong>Take Action:</strong> Small steps toward alignment</p>
+                <p><strong>Benefit:</strong> More meaningful life, clearer decisions, increased satisfaction</p>
+                <p>Not about goals - about who you want to BE, not what you want to HAVE.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotional First Aid</h3>
+                <p>Like physical first aid pero for emotional wounds:</p>
+                <ul class="tips-list">
+                    <li><strong>Rejection:</strong> Revive self-worth, reconnect with supportive people</li>
+                    <li><strong>Failure:</strong> Gain perspective, focus on factors under control</li>
+                    <li><strong>Guilt:</strong> Effective apology, self-forgiveness, learn lesson</li>
+                    <li><strong>Rumination:</strong> Distract, solve problem if solvable, let go if not</li>
+                    <li><strong>Loss:</strong> Allow grief, maintain routines, seek support</li>
+                </ul>
+                <p>Book: "Emotional First Aid" by Guy Winch</p>
+            </div>
+
+            <div class="card">
+                <h3>Containment Technique</h3>
+                <p>For when memories/emotions are overwhelming but not right time to process:</p>
+                <ul class="tips-list">
+                    <li>Visualize box, container, or safe</li>
+                    <li>Mentally place overwhelming thoughts inside</li>
+                    <li>Close and lock container</li>
+                    <li>Tell yourself: "I'll deal with this later at therapy/safe time"</li>
+                    <li>Return to present</li>
+                </ul>
+                <p>Temporary tool - not avoidance. Must process eventually with support.</p>
+            </div>
+
+            <div class="card">
+                <h3>Glitter Jar Technique</h3>
+                <p>Visual metaphor for calming anxiety:</p>
+                <ul class="tips-list">
+                    <li>Clear jar with water and glitter</li>
+                    <li>Shake = your anxious mind</li>
+                    <li>Watch glitter settle = calming process</li>
+                    <li>Settled = clear thinking returns</li>
+                </ul>
+                <p>Especially helpful for kids pero works for adults too. Physical reminder that emotions pass.</p>
+            </div>
+
+            <div class="card">
+                <h3>TIPP Skills (DBT)</h3>
+                <p>Fast-acting distress tolerance:</p>
+                <ul class="tips-list">
+                    <li><strong>T</strong>emperature - Cold water, ice to change body state</li>
+                    <li><strong>I</strong>ntense Exercise - Quick burst to release energy</li>
+                    <li><strong>P</strong>aced Breathing - Slow, controlled breaths</li>
+                    <li><strong>P</strong>aired Muscle Relaxation - Tense then release</li>
+                </ul>
+                <p>Use in crisis - resets nervous system quickly.</p>
+            </div>
+
+            <div class="card">
+                <h3>Worry Time Scheduling</h3>
+                <p>Contain worrying to specific time:</p>
+                <ul class="tips-list">
+                    <li>Set 15-30 min daily "worry time"</li>
+                    <li>When worry arises outside that time: "I'll think about this at 7pm"</li>
+                    <li>Write worries down for later</li>
+                    <li>During worry time, problem-solve what's controllable</li>
+                    <li>Let go of what's not</li>
+                </ul>
+                <p>Prevents all-day worrying. Mind learns worries will be addressed.</p>
+            </div>
+
+            <div class="card">
+                <h3>Loving Kindness Meditation</h3>
+                <p>Build compassion for self and others:</p>
+                <ul class="tips-list">
+                    <li>"May I be happy. May I be healthy. May I be safe."</li>
+                    <li>Then extend to loved one</li>
+                    <li>Then to neutral person</li>
+                    <li>Then to difficult person</li>
+                    <li>Finally to all beings</li>
+                </ul>
+                <p>Reduces self-criticism, increases empathy, improves mood.</p>
+            </div>
+
+            <div class="card">
+                <h3>Anchor Objects</h3>
+                <p>Physical items for grounding and comfort:</p>
+                <ul class="tips-list">
+                    <li>Smooth stone you can rub</li>
+                    <li>Piece of jewelry with meaning</li>
+                    <li>Photo of safe person/place</li>
+                    <li>Handwritten note of encouragement</li>
+                    <li>Religious/spiritual item</li>
+                </ul>
+                <p>Carry with you. Touch when anxious for instant grounding.</p>
+            </div>
+
+            <div class="card">
+                <h3>Behavioral Activation</h3>
+                <p>For depression - doing creates motivation, not vice versa:</p>
+                <ul class="tips-list">
+                    <li>Start with smallest possible task</li>
+                    <li>Don't wait to feel motivated</li>
+                    <li>Action first, feelings follow</li>
+                    <li>Build gradually</li>
+                    <li>Track activities and mood</li>
+                </ul>
+                <p>Break cycle: Inactivity → Worse mood → More inactivity</p>
+            </div>
+
+            <div class="card">
+                <h3>Exposure Hierarchy</h3>
+                <p>For anxiety - gradual facing of fears:</p>
+                <ul class="tips-list">
+                    <li>List fears from least to most scary (0-10 scale)</li>
+                    <li>Start with easiest (3-4 level)</li>
+                    <li>Stay in situation until anxiety decreases 50%</li>
+                    <li>Practice repeatedly</li>
+                    <li>Move up hierarchy slowly</li>
+                </ul>
+                <p>Example for social anxiety: Text stranger → Phone call → Coffee with one person → Small gathering → Party</p>
+            </div>
+
+            <div class="card">
+                <h3>Thought Records (CBT)</h3>
+                <p>Challenge negative automatic thoughts:</p>
+                <ul class="tips-list">
+                    <li><strong>Situation:</strong> What happened?</li>
+                    <li><strong>Thought:</strong> What went through mind?</li>
+                    <li><strong>Emotion:</strong> What did you feel? (0-100%)</li>
+                    <li><strong>Evidence For:</strong> What supports thought?</li>
+                    <li><strong>Evidence Against:</strong> What contradicts it?</li>
+                    <li><strong>Alternative Thought:</strong> More balanced view</li>
+                    <li><strong>Re-rate Emotion:</strong> Intensity now?</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Self-Compassion Break</h3>
+                <p>Three components for difficult moments:</p>
+                <ul class="tips-list">
+                    <li><strong>Mindfulness:</strong> "This is a moment of suffering"</li>
+                    <li><strong>Common Humanity:</strong> "Suffering is part of life, I'm not alone"</li>
+                    <li><strong>Self-Kindness:</strong> "May I be kind to myself"</li>
+                </ul>
+                <p>Hand on heart, speak gently. Research by Kristin Neff shows this reduces distress significantly.</p>
+            </div>
+
+            <div class="card">
+                <h3>ACT Defusion Techniques</h3>
+                <p>Separate self from thoughts:</p>
+                <ul class="tips-list">
+                    <li>"I'm having the thought that..." (not "I am...")</li>
+                    <li>Sing thought to silly tune</li>
+                    <li>Repeat word rapidly until meaningless</li>
+                    <li>Visualize thought as cloud passing</li>
+                    <li>"Thanks for sharing, Brain"</li>
+                </ul>
+                <p>You are not your thoughts. Thoughts are mental events, not facts.</p>
+            </div>
+
+            <div class="card">
+                <h3>Pain-Pleasure Principle</h3>
+                <p>Balance necessary pain with pleasure:</p>
+                <ul class="tips-list">
+                    <li>After hard therapy session - favorite meal</li>
+                    <li>After difficult conversation - comfort activity</li>
+                    <li>After medical appointment - small treat</li>
+                    <li>Balance challenging with soothing</li>
+                </ul>
+                <p>Not avoidance - pairing growth with care. Makes hard things more tolerable.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mirror Work</h3>
+                <p>Looking at self in mirror while speaking affirmations:</p>
+                <ul class="tips-list">
+                    <li>Start small - 30 seconds daily</li>
+                    <li>"I accept myself as I am"</li>
+                    <li>"I am worthy of love"</li>
+                    <li>"I'm doing my best"</li>
+                    <li>Feel awkward at first - normal</li>
+                </ul>
+                <p>Louise Hay technique. Builds self-relationship. Uncomfortable pero powerful over time.</p>
+            </div>
+
+            <div class="card">
+                <h3>Bilateral Stimulation</h3>
+                <p>Self-soothing using alternating left-right stimulation:</p>
+                <ul class="tips-list">
+                    <li>Butterfly hug - tap shoulders alternately</li>
+                    <li>Eye movements - follow finger left-right</li>
+                    <li>Alternating knee taps</li>
+                    <li>Walking - natural bilateral</li>
+                    <li>Music with stereo effect</li>
+                </ul>
+                <p>Used in EMDR. Calms nervous system. Good for anxiety, trauma responses.</p>
+            </div>
+
+            <div class="card">
+                <h3>Future Self Journaling</h3>
+                <p>Write letter from future healed self:</p>
+                <ul class="tips-list">
+                    <li>"Dear past me..."</li>
+                    <li>What would healed you want current you to know?</li>
+                    <li>Compassionate wisdom</li>
+                    <li>Hope and encouragement</li>
+                    <li>Reminder that you make it through</li>
+                </ul>
+                <p>Creates hope. Accesses inner wisdom. Read when struggling.</p>
+            </div>
+
+            <div class="card">
+                <h3>Parts Work (IFS)</h3>
+                <p>Internal Family Systems - recognizing different parts of self:</p>
+                <ul class="tips-list">
+                    <li>Angry part, scared part, critical part</li>
+                    <li>All parts trying to protect you</li>
+                    <li>Dialogue with parts</li>
+                    <li>"What are you trying to protect me from?"</li>
+                    <li>Compassion for all parts</li>
+                </ul>
+                <p>Instead of fighting parts, understand them. Integration over suppression.</p>
+            </div>
+
+            <div class="card">
+                <h3>Shame Resilience</h3>
+                <p>Brené Brown's approach:</p>
+                <ul class="tips-list">
+                    <li><strong>Recognize:</strong> Know shame triggers and symptoms</li>
+                    <li><strong>Reality Check:</strong> Is it true? Whose voice?</li>
+                    <li><strong>Reach Out:</strong> Share story with trusted person</li>
+                    <li><strong>Speak:</strong> Name shame - reduces power</li>
+                </ul>
+                <p>Shame thrives in secrecy. Vulnerability is courage.</p>
+            </div>
+
+            <div class="card">
+                <h3>Emotion Surfing</h3>
+                <p>Ride emotion wave without acting on it:</p>
+                <ul class="tips-list">
+                    <li>Notice emotion rising</li>
+                    <li>Observe without judgment</li>
+                    <li>Allow to peak</li>
+                    <li>Watch it decrease naturally</li>
+                    <li>Emotions peak around 90 seconds if not fed</li>
+                </ul>
+                <p>Don't suppress, don't amplify - just observe. Like wave, it will pass.</p>
+            </div>
+
+            <div class="card">
+                <h3>Gratitude Letter Writing</h3>
+                <p>Write detailed letter to someone you're grateful for:</p>
+                <ul class="tips-list">
+                    <li>Specific things they did</li>
+                    <li>How it impacted you</li>
+                    <li>No need to send (but can)</li>
+                    <li>Research shows mood boost for weeks</li>
+                    <li>Reading aloud to them = even stronger effect</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Time Perspective Therapy</h3>
+                <p>Balance past, present, future orientation:</p>
+                <ul class="tips-list">
+                    <li><strong>Too Past-Focused:</strong> Stuck, ruminating</li>
+                    <li><strong>Too Future-Focused:</strong> Anxious, never satisfied</li>
+                    <li><strong>Too Present-Focused:</strong> Impulsive, no planning</li>
+                </ul>
+                <p><strong>Balance:</strong> Learn from past, plan for future, live in present. Flexibility between time zones.</p>
+            </div>
+        </div>
+
+        <div id="help" class="content-section">
+            <button class="emergency-btn" onclick="alert('Kapag emergency, tumawag sa 911 o pumunta sa pinakamalapit na ospital.')">
+                🚨 EMERGENCY HOTLINE
+            </button>
+
+            <div class="card">
+                <h3>Mental Health Hotlines (Philippines)</h3>
+                
+                <div class="hotline">
+                    <strong>NCMH Crisis Hotline</strong><br>
+                    📞 0917-899-USAP (8727)<br>
+                    ⏰ 24/7 Available
+                </div>
+
+                <div class="hotline">
+                    <strong>DOH Hopeline</strong><br>
+                    📞 0917-558-4673 / 0918-884-4673<br>
+                    📞 (02) 7-989-USAP (8727)
+                </div>
+
+                <div class="hotline">
+                    <strong>In Touch Crisis Line</strong><br>
+                    📞 (02) 8893-7603<br>
+                    📞 0917-800-1123 / 0922-893-8944
+                </div>
+
+                <div class="hotline">
+                    <strong>Natasha Goulbourn Foundation</strong><br>
+                    📞 0917-558-4673
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Kailan Kailangan ng Professional Help?</h3>
+                <ul class="tips-list">
+                    <li>Tumatagal ang malungkot na pakiramdam (2+ linggo)</li>
+                    <li>Nawalan ng interes sa dating mga hilig</li>
+                    <li>May pagbabago sa tulog o pagkain</li>
+                    <li>May iniisip na self-harm o suicide</li>
+                    <li>Hindi makagawa ng daily tasks</li>
+                    <li>Umiinom ng labis o gumagamit ng droga</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Paano Tumulong sa Iba</h3>
+                <ul class="tips-list">
+                    <li>Makinig nang walang judgement</li>
+                    <li>Ipakita ang empathy at pag-unawa</li>
+                    <li>Huwag magbigay ng madaling solusyon</li>
+                    <li>Hikayatin na humingi ng professional help</li>
+                    <li>Manatiling available at supportive</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Mga Senyales na Kailangan Mag-Reach Out</h3>
+                <ul class="tips-list">
+                    <li><strong>Emotional:</strong> Palaging umiiyak, walang motivation, hopeless</li>
+                    <li><strong>Behavioral:</strong> Nag-withdraw sa mga tao, risky behaviors, biglang pagsusulat ng goodbye messages</li>
+                    <li><strong>Physical:</strong> Hindi kumakain/sobrang kumain, insomnia/sobrang tulog, pagkapagod palagi</li>
+                    <li><strong>Cognitive:</strong> Hindi makapag-focus, negative thoughts palagi, memory problems</li>
+                    <li><strong>Social:</strong> Iniiwasan ang lahat, canceling plans, cutting off friends</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Paano Humanap ng Therapist</h3>
+                <p><strong>Mga Tanong na Dapat Itanong:</strong></p>
+                <ul class="tips-list">
+                    <li>Ano ang specialization mo? (depression, anxiety, trauma, etc.)</li>
+                    <li>Anong approach o therapy style ang ginagamit mo?</li>
+                    <li>Magkano per session? May installment ba?</li>
+                    <li>Gaano katagal ang bawat session?</li>
+                    <li>May online option ba o face-to-face lang?</li>
+                    <li>Available ka ba sa araw na kailangan ko?</li>
+                </ul>
+                <p><strong>Red Flags sa Therapist:</strong></p>
+                <ul class="tips-list">
+                    <li>Nagshi-share ng sariling personal problems</li>
+                    <li>Humohorhat o may romantic interest</li>
+                    <li>Nanlalait o judgemental</li>
+                    <li>Laging late o cancel ng appointment</li>
+                    <li>Nagpupush ng religion o specific beliefs</li>
+                    <li>Walang clear treatment plan</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Affordable Mental Health Resources</h3>
+                <p><strong>Free o Low-Cost Options:</strong></p>
+                <ul class="tips-list">
+                    <li><strong>University Counseling Centers:</strong> UP, Ateneo, La Salle - may free services para sa students at discounted para sa public</li>
+                    <li><strong>NCMH (National Center for Mental Health):</strong> Government hospital with affordable rates</li>
+                    <li><strong>Barangay Health Centers:</strong> May basic mental health services</li>
+                    <li><strong>NGOs:</strong> Natasha Goulbourn Foundation, Mental Health PH - may free programs</li>
+                    <li><strong>Online Platforms:</strong> MindNation, Empath, TherapyRoute - may range ng prices</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Ano ang Gagawin sa Crisis</h3>
+                <p><strong>Kung Ikaw ang nasa Crisis:</strong></p>
+                <ul class="tips-list">
+                    <li>Tumawag sa crisis hotline IMMEDIATELY</li>
+                    <li>Huwag mag-isa - tawagan ang trusted person</li>
+                    <li>Umalis sa dangerous environment</li>
+                    <li>Alisin ang means ng self-harm (weapon, pills, etc.)</li>
+                    <li>Pumunta sa ER kung life-threatening na</li>
+                    <li>Isipin: "This feeling is temporary. Hindi permanent."</li>
+                </ul>
+                <p><strong>Kung May Kakilala sa Crisis:</strong></p>
+                <ul class="tips-list">
+                    <li>Tanungin directly: "May balak ka bang saktan ang sarili mo?"</li>
+                    <li>Huwag iwanan mag-isa</li>
+                    <li>Itago ang mga bagay na puwedeng gamitin for self-harm</li>
+                    <li>Call crisis hotline para sa guidance</li>
+                    <li>Dalhin sa ospital kung kailangan</li>
+                    <li>Inform family o close friends (with permission if possible)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Types of Mental Health Professionals</h3>
+                <p><strong>Psychiatrist:</strong> Medical doctor (MD) na puwedeng mag-prescribe ng gamot. Para sa severe mental illnesses.</p>
+                <p><strong>Psychologist:</strong> PhD o PsyD, specializing sa therapy at psychological testing. Hindi puwede mag-prescribe ng gamot.</p>
+                <p><strong>Counselor:</strong> Trained sa counseling, usually para sa specific issues (career, marriage, grief).</p>
+                <p><strong>Therapist:</strong> General term para sa mental health professional na nagbibigay ng talk therapy.</p>
+                <p><strong>Social Worker:</strong> Tumutulong sa practical aspects (resources, support systems, case management).</p>
+            </div>
+
+            <div class="card">
+                <h3>Understanding Therapy</h3>
+                <p><strong>Mga Myths:</strong></p>
+                <ul class="tips-list">
+                    <li>❌ "Para lang sa baliw" → ✅ Para sa lahat na gustong mag-improve ng mental health</li>
+                    <li>❌ "Isang session lang okay na" → ✅ Process yan, kailangan ng time</li>
+                    <li>❌ "Dapat instant fix" → ✅ Gradual improvement, may ups and downs</li>
+                    <li>❌ "Weakness yan" → ✅ Sign of strength na humingi ng help</li>
+                    <li>❌ "Mahal" → ✅ May affordable at free options</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Suicide Prevention</h3>
+                <p><strong>Warning Signs:</strong></p>
+                <ul class="tips-list">
+                    <li>Talking about wanting to die or hurt themselves</li>
+                    <li>Expressing hopelessness about the future</li>
+                    <li>Planning or researching ways to die</li>
+                    <li>Giving away prized possessions</li>
+                    <li>Saying goodbye na parang final</li>
+                    <li>Withdrawing from everyone</li>
+                    <li>Sudden calmness after being depressed (may naging decision na)</li>
+                </ul>
+                <p><strong>IMPORTANTE:</strong> Kapag may nag-express ng suicidal thoughts, take it seriously ALWAYS. Huwag isipin na "para lang sa attention." Mas safe na mag-overreact kaysa underreact.</p>
+            </div>
+
+            <div class="card">
+                <h3>Self-Harm Understanding</h3>
+                <p>Self-harm ay coping mechanism para sa emotional pain. Hindi ito "para sa attention" - ito ay legitimate cry for help.</p>
+                <p><strong>Healthy Alternatives:</strong></p>
+                <ul class="tips-list">
+                    <li>Hold ice cubes sa kamay (physical sensation without harm)</li>
+                    <li>Snap rubber band sa wrist (mild alternative)</li>
+                    <li>Draw on skin with red marker</li>
+                    <li>Squeeze stress ball very hard</li>
+                    <li>Scream sa unan o private space</li>
+                    <li>Intense exercise (running, boxing)</li>
+                    <li>Cold shower</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Supporting a Loved One</h3>
+                <p><strong>Mga Dapat Sabihin:</strong></p>
+                <ul class="tips-list">
+                    <li>"Nandito ako para sa iyo."</li>
+                    <li>"Hindi ka nag-iisa sa nararamdaman mo."</li>
+                    <li>"Salamat sa pagtitiwala sa akin."</li>
+                    <li>"Okay lang na hindi ka okay."</li>
+                    <li>"Walang timeline sa healing. Take your time."</li>
+                </ul>
+                <p><strong>Huwag Sabihin:</strong></p>
+                <ul class="tips-list">
+                    <li>"Mag-positive thinking ka lang."</li>
+                    <li>"Mas malala pa ibang tao sa'yo."</li>
+                    <li>"Kaya mo yan, malakas ka."</li>
+                    <li>"Mag-pray ka lang."</li>
+                    <li>"OA mo naman."</li>
+                    <li>"Snap out of it."</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Recovery is Not Linear</h3>
+                <p>Ang healing ay hindi straight line pataas. May good days at bad days. May times na parang bumalik ka sa dati. Ito ay normal at expected.</p>
+                <p><strong>Progress ay hindi measured by:</strong></p>
+                <ul class="tips-list">
+                    <li>Kung nawala na completely ang symptoms</li>
+                    <li>Kung laging happy ka na</li>
+                    <li>Kung hindi ka na umiiyak</li>
+                </ul>
+                <p><strong>Progress ay measured by:</strong></p>
+                <ul class="tips-list">
+                    <li>Kung mas alam mo na paano i-manage ang emotions</li>
+                    <li>Kung mas madali nang humingi ng tulong</li>
+                    <li>Kung mas mabilis ka nang makabangon sa setbacks</li>
+                    <li>Kung mas nakakapag-function ka sa daily life</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Trauma-Informed Care</h3>
+                <p>Approach na nag-recognize ng impact ng trauma:</p>
+                <p><strong>Key Principles:</strong></p>
+                <ul class="tips-list">
+                    <li><strong>Safety:</strong> Physical at emotional</li>
+                    <li><strong>Trustworthiness:</strong> Transparency sa lahat</li>
+                    <li><strong>Peer Support:</strong> Connection with others who understand</li>
+                    <li><strong>Collaboration:</strong> Shared decision-making</li>
+                    <li><strong>Empowerment:</strong> Building on strengths</li>
+                    <li><strong>Cultural Sensitivity:</strong> Respeto sa background</li>
+                </ul>
+                <p>Kapag humihingi ng therapy, pwede mong itanong if trauma-informed ang approach nila.</p>
+            </div>
+
+            <div class="card">
+                <h3>PTSD vs Complex PTSD</h3>
+                <p><strong>PTSD:</strong> From single traumatic event (accident, assault, disaster)</p>
+                <p><strong>Complex PTSD (C-PTSD):</strong> From prolonged, repeated trauma (childhood abuse, domestic violence, captivity)</p>
+                <p><strong>C-PTSD Additional Symptoms:</strong></p>
+                <ul class="tips-list">
+                    <li>Difficulty regulating emotions</li>
+                    <li>Negative self-concept</li>
+                    <li>Difficulty maintaining relationships</li>
+                    <li>Dissociation</li>
+                    <li>Feeling permanently damaged</li>
+                </ul>
+                <p>Both require professional treatment. EMDR, CBT, at DBT ang common therapies.</p>
+            </div>
+
+            <div class="card">
+                <h3>Medication Myths</h3>
+                <ul class="tips-list">
+                    <li>❌ "Addictive lahat" → ✅ Antidepressants are not addictive (pero may withdrawal if stopped suddenly)</li>
+                    <li>❌ "Para lang sa severe cases" → ✅ Pwede rin for moderate, as doctor recommends</li>
+                    <li>❌ "Magbabago personality" → ✅ Helps you be MORE yourself by managing symptoms</li>
+                    <li>❌ "Lifelong na yan" → ✅ Some people need it long-term, others temporary lang</li>
+                    <li>❌ "Pwede ko i-manage on my own" → ✅ Some conditions need medication + therapy combo</li>
+                </ul>
+                <p><strong>Important:</strong> Never self-medicate. Consult psychiatrist. Never stop abruptly.</p>
+            </div>
+
+            <div class="card">
+                <h3>Insurance at Mental Health</h3>
+                <p><strong>PhilHealth Coverage:</strong></p>
+                <ul class="tips-list">
+                    <li>Mental health consultations ay covered</li>
+                    <li>Confinement sa mental health facilities</li>
+                    <li>Some medications</li>
+                </ul>
+                <p><strong>Private Insurance/HMO:</strong></p>
+                <ul class="tips-list">
+                    <li>Check policy - may mental health coverage ba?</li>
+                    <li>Ilan sessions covered per year?</li>
+                    <li>Need ba ng referral?</li>
+                    <li>Accredited therapists/clinics lang ba?</li>
+                </ul>
+                <p>Know your benefits. Mental health is health.</p>
+            </div>
+
+            <div class="card">
+                <h3>Online Therapy Platforms (Philippines)</h3>
+                <p><strong>MindNation:</strong> Subscription-based, chat/video therapy</p>
+                <p><strong>Empath:</strong> On-demand, pay-per-session</p>
+                <p><strong>TherapyRoute:</strong> Directory ng therapists, book online</p>
+                <p><strong>Lumos:</strong> Mental health app with therapists</p>
+                <p><strong>BetterHelp/Talkspace:</strong> International pero pwede rin sa PH</p>
+                <p><strong>Pros ng Online:</strong> Convenient, mas affordable, walang stigma ng pumunta sa clinic</p>
+                <p><strong>Cons:</strong> Need stable internet, less personal than face-to-face, emergency response limited</p>
+            </div>
+
+            <div class="card">
+                <h3>Red Flags: Kapag Kailangan ng IMMEDIATE Help</h3>
+                <p><strong>⚠️ CALL HOTLINE OR 911 IMMEDIATELY IF:</strong></p>
+                <ul class="tips-list">
+                    <li>May specific plan to hurt self or others</li>
+                    <li>Hallucinations or delusions na dangerous</li>
+                    <li>Complete loss of touch with reality</li>
+                    <li>Severe substance overdose</li>
+                    <li>Violent or threatening behavior</li>
+                    <li>Already hurt self and needs medical attention</li>
+                </ul>
+                <p>Don't wait. Don't think "baka OA lang." Better safe.</p>
+            </div>
+
+            <div class="card">
+                <h3>Advocating for Mental Health sa Pilipinas</h3>
+                <p>Paano makakatulong sa movement:</p>
+                <ul class="tips-list">
+                    <li>Share your story (if comfortable) - reduces stigma</li>
+                    <li>Educate family and friends</li>
+                    <li>Support mental health organizations</li>
+                    <li>Push for better mental health coverage sa workplace</li>
+                    <li>Vote for leaders na may mental health agenda</li>
+                    <li>Call out harmful rhetoric about mental illness</li>
+                    <li>Support Mental Health Act implementation</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Philippine Mental Health Law (RA 11036)</h3>
+                <p>Ang batas na nag-guarantee ng mental health rights:</p>
+                <ul class="tips-list">
+                    <li>Mental health services ay basic right</li>
+                    <li>Protection from discrimination</li>
+                    <li>Voluntary treatment preferred over involuntary</li>
+                    <li>Schools required mag-provide ng mental health programs</li>
+                    <li>Workplaces dapat may mental health policy</li>
+                    <li>Government hospitals required mag-offer ng psychiatric services</li>
+                </ul>
+                <p>Know your rights. Use them.</p>
+            </div>
+
+            <div class="card">
+                <h3>Support Groups sa Pilipinas</h3>
+                <p><strong>Depression:</strong> Mental Health PH, Silakbo PH</p>
+                <p><strong>Anxiety:</strong> Anxiety Support PH (online communities)</p>
+                <p><strong>Suicide Prevention:</strong> Natasha Goulbourn Foundation</p>
+                <p><strong>LGBTQ+ Mental Health:</strong> LoveYourself</p>
+                <p><strong>Cancer/Illness:</strong> Various hospital-based groups</p>
+                <p><strong>Addiction:</strong> AA Philippines, NA Philippines</p>
+                <p><strong>Grief:</strong> Various churches and community centers</p>
+                <p>Support groups provide peer support - hindi replacement for therapy pero powerful supplement.</p>
+            </div>
+
+            <div class="card">
+                <h3>Kapag Ayaw Humiging ng Tulong ang Loved One</h3>
+                <p>You cannot force someone to get help. Pero pwede mo gawin:</p>
+                <ul class="tips-list">
+                    <li>Express concern without judgment: "Worried ako sayo"</li>
+                    <li>Share specific observations: "Napansin ko na..." (not "You always...")</li>
+                    <li>Offer to help find resources or accompany them</li>
+                    <li>Set boundaries on what you can tolerate</li>
+                    <li>Take care of your own mental health</li>
+                    <li>Accept na hindi mo siya mapipilitang magbago</li>
+                </ul>
+                <p>You can lead a horse to water pero hindi mo siya mapipilitang uminom. Protect yourself too.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mental Health First Aid</h3>
+                <p>Parang physical first aid pero for mental health crises:</p>
+                <p><strong>ALGEE Framework:</strong></p>
+                <ul class="tips-list">
+                    <li><strong>Assess:</strong> Assess risk of harm</li>
+                    <li><strong>Listen:</strong> Nonjudgmental listening</li>
+                    <li><strong>Give:</strong> Reassurance and information</li>
+                    <li><strong>Encourage:</strong> Professional help</li>
+                    <li><strong>Encourage:</strong> Self-help and other support</li>
+                </ul>
+                <p>May Mental Health First Aid training courses available sa PH. Worth learning.</p>
+            </div>
+
+            <div class="card">
+                <h3>Long-term Maintenance</h3>
+                <p>Mental health ay parang physical health - need ng maintenance:</p>
+                <ul class="tips-list">
+                    <li>Regular check-ins with therapist (even when "okay")</li>
+                    <li>Continue medication as prescribed (don't stop when feeling better)</li>
+                    <li>Maintain healthy routines</li>
+                    <li>Monitor warning signs ng relapse</li>
+                    <li>Keep support system active</li>
+                    <li>Adjust strategies as needed - what worked before might need updating</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Building a Crisis Plan</h3>
+                <p>Make this BEFORE crisis happens:</p>
+                <p><strong>Include:</strong></p>
+                <ul class="tips-list">
+                    <li>Warning signs na ikaw ay nag-deteriorate</li>
+                    <li>Coping strategies na usually gumagana</li>
+                    <li>List ng safe people to contact (with numbers)</li>
+                    <li>Professional contacts (therapist, psychiatrist)</li>
+                    <li>Crisis hotlines</li>
+                    <li>Reasons to live (read when hopeless)</li>
+                    <li>Emergency room locations</li>
+                </ul>
+                <p>Share this plan with trusted person. Update regularly.</p>
+            </div>
+
+            <div class="card">
+                <h3>Therapy Modalities Explained</h3>
+                <p><strong>CBT (Cognitive Behavioral Therapy):</strong> Change thoughts to change feelings. Good for: Depression, anxiety, phobias</p>
+                <p><strong>DBT (Dialectical Behavior Therapy):</strong> Emotion regulation, distress tolerance. Good for: BPD, self-harm, emotional dysregulation</p>
+                <p><strong>EMDR (Eye Movement Desensitization):</strong> Process trauma through bilateral stimulation. Good for: PTSD, trauma</p>
+                <p><strong>ACT (Acceptance Commitment Therapy):</strong> Accept feelings, commit to values. Good for: Chronic pain, OCD, general wellness</p>
+                <p><strong>Psychodynamic:</strong> Explore unconscious patterns from past. Good for: Deep-rooted issues, relationship patterns</p>
+                <p>Ask your therapist which modality they use.</p>
+            </div>
+
+            <div class="card">
+                <h3>Recognizing Progress in Therapy</h3>
+                <p>Hindi always obvious, pero may signs:</p>
+                <ul class="tips-list">
+                    <li>Mas nag-oopen up ka sa sessions</li>
+                    <li>Using skills outside therapy</li>
+                    <li>Patterns mo ay mas clear na</li>
+                    <li>Less intense emotional reactions</li>
+                    <li>Better relationships</li>
+                    <li>More self-awareness</li>
+                    <li>Bouncing back faster from setbacks</li>
+                </ul>
+                <p>Therapy is marathon, not sprint. Small changes add up.</p>
+            </div>
+
+            <div class="card">
+                <h3>When to Switch Therapists</h3>
+                <p>Okay lang mag-switch kung:</p>
+                <ul class="tips-list">
+                    <li>Hindi mo feel na safe o understood</li>
+                    <li>Ethical boundaries crossed</li>
+                    <li>Walang progress after reasonable time (6+ months)</li>
+                    <li>Approach nila ay hindi compatible sa needs mo</li>
+                    <li>Judgment or invalidation nararamdaman mo</li>
+                    <li>Life changes - need different specialty</li>
+                </ul>
+                <p>Therapeutic relationship is important. Fit matters. Hindi pag-give up ang pag-switch - it's self-advocacy.</p>
+            </div>
+
+            <div class="card">
+                <h3>Psychiatric Medications Overview</h3>
+                <p><strong>Antidepressants (SSRI/SNRI):</strong> For depression, anxiety. Takes 2-6 weeks to work.</p>
+                <p><strong>Benzodiazepines:</strong> For acute anxiety, panic. Fast-acting pero may dependence risk.</p>
+                <p><strong>Mood Stabilizers:</strong> For bipolar. Lithium, anticonvulsants.</p>
+                <p><strong>Antipsychotics:</strong> For schizophrenia, severe bipolar, agitation.</p>
+                <p><strong>Stimulants:</strong> For ADHD.</p>
+                <p><strong>Sleep Aids:</strong> For insomnia.</p>
+                <p>All have side effects. Work with psychiatrist to find right fit. Never adjust dose on your own.</p>
+            </div>
+
+            <div class="card">
+                <h3>Hospitalization for Mental Health</h3>
+                <p><strong>Voluntary Admission:</strong> You choose to admit yourself. Can help with:</p>
+                <ul class="tips-list">
+                    <li>Suicidal crisis</li>
+                    <li>Severe depression/psychosis</li>
+                    <li>Need for intensive treatment</li>
+                    <li>Medication adjustment under supervision</li>
+                </ul>
+                <p><strong>Involuntary Admission:</strong> If danger to self/others, court can order. Controversial pero sometimes necessary.</p>
+                <p><strong>What to Expect:</strong> Assessment, medication, therapy sessions, structured environment, safety monitoring.</p>
+                <p>Not shameful. Sometimes needed for stabilization.</p>
+            </div>
+
+            <div class="card">
+                <h3>Community Mental Health Resources</h3>
+                <p><strong>Barangay Level:</strong></p>
+                <ul class="tips-list">
+                    <li>Barangay Health Workers - basic mental health first aid</li>
+                    <li>Barangay Officials - can connect to services</li>
+                </ul>
+                <p><strong>City/Municipal:</strong></p>
+                <ul class="tips-list">
+                    <li>City Health Offices - mental health programs</li>
+                    <li>District Hospitals - psychiatric outpatient</li>
+                </ul>
+                <p><strong>Regional:</strong></p>
+                <ul class="tips-list">
+                    <li>Regional Mental Health Centers</li>
+                    <li>NCMH (National Center for Mental Health)</li>
+                </ul>
+                <p><strong>NGOs:</strong> Natasha Goulbourn Foundation, Mental Health PH, Silakbo PH</p>
+            </div>
+
+            <div class="card">
+                <h3>Workplace Mental Health Rights</h3>
+                <p>Under Mental Health Law, employees have rights:</p>
+                <ul class="tips-list">
+                    <li>Mental health days (sick leave coverage)</li>
+                    <li>Reasonable accommodations</li>
+                    <li>Protection from discrimination</li>
+                    <li>Confidentiality of mental health status</li>
+                    <li>Access to workplace mental health programs</li>
+                </ul>
+                <p><strong>If violated:</strong> Report to HR, DOLE, or file case. Document everything.</p>
+            </div>
+
+            <div class="card">
+                <h3>School-Based Mental Health</h3>
+                <p>Under Mental Health Law, schools must provide:</p>
+                <ul class="tips-list">
+                    <li>Guidance counselors</li>
+                    <li>Mental health education</li>
+                    <li>Referral systems</li>
+                    <li>Crisis intervention</li>
+                    <li>Safe spaces</li>
+                </ul>
+                <p><strong>Para sa Students:</strong> Approach your guidance counselor. They're trained and confidential (except if danger to self/others).</p>
+                <p><strong>Para sa Parents:</strong> Advocate for your child. Mental health is part of education.</p>
+            </div>
+
+            <div class="card">
+                <h3>Peer Support vs Professional Help</h3>
+                <p><strong>Peer Support (Friends, Support Groups):</strong></p>
+                <ul class="tips-list">
+                    <li>✅ Good for: Emotional validation, shared experiences, ongoing support</li>
+                    <li>❌ Not for: Diagnosis, treatment, crisis intervention</li>
+                </ul>
+                <p><strong>Professional Help (Therapist, Psychiatrist):</strong></p>
+                <ul class="tips-list">
+                    <li>✅ Good for: Assessment, diagnosis, treatment, crisis management</li>
+                    <li>❌ Not for: Being your friend (boundaries exist)</li>
+                </ul>
+                <p>Both matter. Kailangan pareho for comprehensive support.</p>
+            </div>
+
+            <div class="card">
+                <h3>Dealing with Treatment-Resistant Conditions</h3>
+                <p>Kapag multiple treatments tried pero walang improvement:</p>
+                <ul class="tips-list">
+                    <li>Get second opinion - possible misdiagnosis</li>
+                    <li>Consider combination treatments</li>
+                    <li>Explore newer options - TMS, ketamine therapy</li>
+                    <li>Address lifestyle factors - sleep, nutrition, exercise</li>
+                    <li>Check for underlying medical issues</li>
+                    <li>Join clinical trials if available</li>
+                </ul>
+                <p>Don't give up. May treatment-resistant pero walang hopeless.</p>
+            </div>
+
+            <div class="card">
+                <h3>Navigating Healthcare System</h3>
+                <p><strong>Tips:</strong></p>
+                <ul class="tips-list">
+                    <li>Bring companion sa appointments</li>
+                    <li>Write down questions beforehand</li>
+                    <li>Keep records organized</li>
+                    <li>Ask for clarification if hindi maintindihan</li>
+                    <li>Get copies of all documents</li>
+                    <li>Know your rights as patient</li>
+                    <li>Advocate for yourself - you're the expert on your experience</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Telepsychiatry at Online Prescriptions</h3>
+                <p>Virtual consultations with psychiatrists:</p>
+                <p><strong>Pros:</strong> Convenient, accessible, less stigma, same quality care</p>
+                <p><strong>Cons:</strong> Need internet, less emergency support, may lack rapport</p>
+                <p><strong>Available Platforms:</strong> MindNation, KonsultaMD, hospitals with telemedicine</p>
+                <p><strong>Prescriptions:</strong> Can be sent electronically or picked up at clinic. Some pharmacies deliver.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mental Health at Intersectionality</h3>
+                <p>Multiple marginalized identities compound struggles:</p>
+                <ul class="tips-list">
+                    <li>LGBTQ+ + poverty = limited access to affirming care</li>
+                    <li>Woman + disability = double discrimination</li>
+                    <li>Indigenous + mental illness = cultural barriers to treatment</li>
+                    <li>Senior + depression = dismissed as "normal aging"</li>
+                </ul>
+                <p>Need culturally competent care that addresses all aspects of identity.</p>
+            </div>
+
+            <div class="card">
+                <h3>Harm Reduction Approach</h3>
+                <p>Kapag hindi pa kayang totally stop unhealthy coping:</p>
+                <p><strong>Philosophy:</strong> Meet people where they are. Small improvements over perfection.</p>
+                <p><strong>Examples:</strong></p>
+                <ul class="tips-list">
+                    <li>Can't stop drinking? Reduce amount, avoid driving</li>
+                    <li>Self-harm urges? Use ice instead of cutting</li>
+                    <li>Binge eating? Allow without guilt, focus on gentle nutrition</li>
+                </ul>
+                <p>Goal is reducing harm while working towards recovery. Progress, not perfection.</p>
+            </div>
+
+            <div class="card">
+                <h3>Suicide Postvention</h3>
+                <p>Support for those left behind after suicide:</p>
+                <p><strong>Survivors face:</strong></p>
+                <ul class="tips-list">
+                    <li>Complicated grief with guilt, anger, confusion</li>
+                    <li>"What could I have done?"</li>
+                    <li>Stigma and isolation</li>
+                    <li>Increased suicide risk themselves</li>
+                    <li>Trauma from discovery or circumstances</li>
+                </ul>
+                <p><strong>Support Needed:</strong></p>
+                <ul class="tips-list">
+                    <li>Survivor support groups</li>
+                    <li>Trauma-informed therapy</li>
+                    <li>Community without judgment</li>
+                    <li>Time - grief has no timeline</li>
+                </ul>
+                <p>Contact: Natasha Goulbourn Foundation has survivor programs.</p>
+            </div>
+
+            <div class="card">
+                <h3>Psychiatric Advance Directives</h3>
+                <p>Legal document for mental health crisis:</p>
+                <p><strong>Specifies:</strong></p>
+                <ul class="tips-list">
+                    <li>Preferred treatments and medications</li>
+                    <li>Treatments to avoid</li>
+                    <li>Who makes decisions if unable</li>
+                    <li>Preferred hospital/psychiatrist</li>
+                    <li>Instructions for care</li>
+                </ul>
+                <p>Create when stable. Ensures your wishes respected during crisis. Discuss with lawyer and psychiatrist.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mental Health Leave Rights</h3>
+                <p><strong>Employees entitled to:</strong></p>
+                <ul class="tips-list">
+                    <li>Use sick leave for mental health</li>
+                    <li>Not required to disclose specific diagnosis</li>
+                    <li>"Medical reasons" is sufficient</li>
+                    <li>Medical certificate from any licensed doctor</li>
+                    <li>Protection from discrimination</li>
+                </ul>
+                <p><strong>For chronic conditions:</strong> Can request FMLA equivalent (if available) or reasonable accommodations under Mental Health Law.</p>
+            </div>
+
+            <div class="card">
+                <h3>Involuntary Commitment Laws</h3>
+                <p>When can someone be hospitalized against will:</p>
+                <p><strong>Criteria (must meet ALL):</strong></p>
+                <ul class="tips-list">
+                    <li>Mental disorder present</li>
+                    <li>Danger to self or others</li>
+                    <li>Unable to make informed decisions</li>
+                    <li>Less restrictive options exhausted</li>
+                </ul>
+                <p><strong>Process:</strong> Petition to court, psychiatric evaluation, hearing, time-limited order</p>
+                <p><strong>Rights:</strong> Legal representation, appeal process, periodic review</p>
+            </div>
+
+            <div class="card">
+                <h3>ECT (Electroconvulsive Therapy)</h3>
+                <p>Misunderstood treatment option:</p>
+                <p><strong>Modern ECT:</strong> Safe, done under anesthesia, controlled</p>
+                <p><strong>Used for:</strong> Severe treatment-resistant depression, catatonia, severe mania</p>
+                <p><strong>How it works:</strong> Brief electrical stimulation causes therapeutic seizure</p>
+                <p><strong>Side effects:</strong> Temporary memory issues, headache</p>
+                <p><strong>Effectiveness:</strong> High success rate when other treatments fail</p>
+                <p>Not like movies portray. Last resort pero can be life-saving.</p>
+            </div>
+
+            <div class="card">
+                <h3>TMS (Transcranial Magnetic Stimulation)</h3>
+                <p>Non-invasive brain stimulation:</p>
+                <ul class="tips-list">
+                    <li>No anesthesia needed</li>
+                    <li>Magnetic pulses to brain areas</li>
+                    <li>For treatment-resistant depression</li>
+                    <li>Daily sessions over weeks</li>
+                    <li>Minimal side effects</li>
+                </ul>
+                <p>Newer option. Expensive and limited availability sa Pilipinas pero growing.</p>
+            </div>
+
+            <div class="card">
+                <h3>Ketamine Therapy</h3>
+                <p>Emerging treatment for depression:</p>
+                <ul class="tips-list">
+                    <li>IV infusion or nasal spray</li>
+                    <li>Rapid relief (hours vs weeks)</li>
+                    <li>For treatment-resistant cases</li>
+                    <li>Supervised medical setting</li>
+                    <li>Research ongoing</li>
+                </ul>
+                <p>Not yet widely available sa PH. Promising pero expensive. Discuss with psychiatrist.</p>
+            </div>
+
+            <div class="card">
+                <h3>Peer Support Specialists</h3>
+                <p>Mental health professionals with lived experience:</p>
+                <ul class="tips-list">
+                    <li>Have experienced mental health challenges</li>
+                    <li>Trained to provide support</li>
+                    <li>Bridge between clinical and lived experience</li>
+                    <li>Role models of recovery</li>
+                    <li>Offer hope and practical strategies</li>
+                </ul>
+                <p>Growing field. Some hospitals and NGOs hiring peer specialists.</p>
+            </div>
+
+            <div class="card">
+                <h3>Clubhouse Model</h3>
+                <p>Community-based recovery program:</p>
+                <ul class="tips-list">
+                    <li>Members (not patients) run operations</li>
+                    <li>Voluntary, free to join</li>
+                    <li>Work-ordered day - meaningful activities</li>
+                    <li>Transitional employment programs</li>
+                    <li>Social support and community</li>
+                </ul>
+                <p>International model. Some organizations sa Manila starting similar programs.</p>
+            </div>
+
+            <div class="card">
+                <h3>Supported Employment</h3>
+                <p>Help finding and keeping jobs for those with mental illness:</p>
+                <ul class="tips-list">
+                    <li>Job coaching and training</li>
+                    <li>Workplace accommodations advocacy</li>
+                    <li>Ongoing support</li>
+                    <li>Matching skills to jobs</li>
+                    <li>Crisis intervention if needed</li>
+                </ul>
+                <p>Evidence-based approach. Inquire at mental health NGOs or DOLE programs.</p>
+            </div>
+
+            <div class="card">
+                <h3>Respite Care</h3>
+                <p>Temporary relief for caregivers:</p>
+                <ul class="tips-list">
+                    <li>Short-term care for your loved one</li>
+                    <li>Allows caregiver to rest</li>
+                    <li>Prevents burnout</li>
+                    <li>Can be few hours to few days</li>
+                    <li>In-home or facility-based</li>
+                </ul>
+                <p>Not selfish - necessary. You cannot pour from empty cup. Ask social workers about options.</p>
+            </div>
+
+            <div class="card">
+                <h3>Wraparound Services</h3>
+                <p>Coordinated, comprehensive care approach:</p>
+                <ul class="tips-list">
+                    <li>Team of providers working together</li>
+                    <li>Addresses multiple needs - mental health, housing, employment</li>
+                    <li>Family and community involved</li>
+                    <li>Culturally appropriate</li>
+                    <li>Strength-based</li>
+                </ul>
+                <p>Ideal model pero limited implementation. Advocate for this in your area.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mental Health First Aid Certification</h3>
+                <p>Training program open to public:</p>
+                <ul class="tips-list">
+                    <li>8-hour course</li>
+                    <li>Learn to recognize mental health crises</li>
+                    <li>How to provide initial help</li>
+                    <li>Connect to professional resources</li>
+                    <li>Reduce stigma</li>
+                </ul>
+                <p>Available through some hospitals and organizations. Consider getting certified - useful life skill.</p>
+            </div>
+
+            <div class="card">
+                <h3>Assertive Community Treatment (ACT)</h3>
+                <p>Intensive outpatient model for severe mental illness:</p>
+                <ul class="tips-list">
+                    <li>Team-based care</li>
+                    <li>Services delivered in community (home, work)</li>
+                    <li>24/7 availability</li>
+                    <li>Low caseload per staff</li>
+                    <li>Prevents hospitalization</li>
+                </ul>
+                <p>Gold standard pero limited sa Pilipinas. Advocate for expansion. Inquire sa NCMH.</p>
+            </div>
+
+            <div class="card">
+                <h3>Sliding Scale Therapy</h3>
+                <p>Pay based on income:</p>
+                <ul class="tips-list">
+                    <li>Many private therapists offer this</li>
+                    <li>Usually need to show proof of income</li>
+                    <li>Can range from 500 to 3000+ per session</li>
+                    <li>Some as low as 300 for low-income</li>
+                    <li>Ask during initial inquiry</li>
+                </ul>
+                <p>Don't assume too expensive. Many therapists want to help regardless of ability to pay.</p>
+            </div>
+
+            <div class="card">
+                <h3>Therapeutic Boarding Schools</h3>
+                <p>For adolescents with serious issues:</p>
+                <ul class="tips-list">
+                    <li>Combination of education and treatment</li>
+                    <li>Structured environment</li>
+                    <li>For substance abuse, behavioral issues, trauma</li>
+                    <li>Family therapy component</li>
+                    <li>Controversial - research facility carefully</li>
+                </ul>
+                <p>Very limited sa PH. Most quality options abroad - expensive. Explore intensive outpatient first.</p>
+            </div>
+
+            <div class="card">
+                <h3>Psychiatric Service Dogs</h3>
+                <p>Trained dogs for mental health conditions:</p>
+                <ul class="tips-list">
+                    <li>Interrupt panic attacks</li>
+                    <li>Provide deep pressure therapy</li>
+                    <li>Remind to take medication</li>
+                    <li>Ground during dissociation</li>
+                    <li>Create space in crowds</li>
+                </ul>
+                <p>Different from emotional support animals. Specially trained. Not common sa PH pero growing. Service Dog certification needed.</p>
+            </div>
+
+            <div class="card">
+                <h3>Art Therapy Programs</h3>
+                <p>Expressive therapy through art-making:</p>
+                <ul class="tips-list">
+                    <li>No art skill required</li>
+                    <li>Process over product</li>
+                    <li>Access emotions through creation</li>
+                    <li>Good for trauma, grief, anxiety</li>
+                    <li>Licensed art therapists lead sessions</li>
+                </ul>
+                <p>Some hospitals and NGOs offer. Inquire sa Art Therapy Philippines organization.</p>
+            </div>
+
+            <div class="card">
+                <h3>Drama/Music/Dance Therapy</h3>
+                <p>Creative arts therapies:</p>
+                <p><strong>Drama:</strong> Role-play, psychodrama, embodied expression</p>
+                <p><strong>Music:</strong> Creating, listening, processing through sound</p>
+                <p><strong>Dance/Movement:</strong> Body-based healing, trauma release</p>
+                <p>All evidence-based. Limited certified practitioners sa PH pero growing field.</p>
+            </div>
+
+            <div class="card">
+                <h3>Wilderness Therapy</h3>
+                <p>Therapy in nature setting:</p>
+                <ul class="tips-list">
+                    <li>Extended outdoor experiences</li>
+                    <li>Challenge and adventure</li>
+                    <li>Group and individual therapy</li>
+                    <li>Disconnection from triggers</li>
+                    <li>Build confidence and skills</li>
+                </ul>
+                <p>Not common sa PH. Some retreat centers offer short versions. Nature walks with therapy more accessible.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mindfulness-Based Programs</h3>
+                <p>Structured mindfulness courses:</p>
+                <p><strong>MBSR (Stress Reduction):</strong> 8-week program, evidence-based</p>
+                <p><strong>MBCT (Cognitive Therapy):</strong> For depression relapse prevention</p>
+                <p><strong>DBT:</strong> Includes mindfulness module</p>
+                <p>Some hospitals and wellness centers offer. Can also do online versions.</p>
+            </div>
+
+            <div class="card">
+                <h3>Yoga Therapy</h3>
+                <p>Therapeutic yoga for mental health:</p>
+                <ul class="tips-list">
+                    <li>Trauma-informed approach</li>
+                    <li>Gentle, accessible poses</li>
+                    <li>Breathwork integration</li>
+                    <li>Body awareness and safety</li>
+                    <li>Evidence for PTSD, anxiety, depression</li>
+                </ul>
+                <p>Different from regular yoga class. Certified yoga therapists. Many studios sa Metro Manila now offer.</p>
+            </div>
+
+            <div class="card">
+                <h3>Neurofeedback Therapy</h3>
+                <p>Brain training using real-time feedback:</p>
+                <ul class="tips-list">
+                    <li>EEG monitors brain waves</li>
+                    <li>Learns to regulate patterns</li>
+                    <li>For ADHD, anxiety, PTSD, insomnia</li>
+                    <li>Non-invasive</li>
+                    <li>Multiple sessions needed</li>
+                </ul>
+                <p>Emerging option. Some clinics sa Manila offer. Expensive pero promising research.</p>
+            </div>
+
+            <div class="card">
+                <h3>Couples/Family Therapy Approaches</h3>
+                <p><strong>Emotionally Focused Therapy (EFT):</strong> Attachment-based for couples</p>
+                <p><strong>Gottman Method:</strong> Research-backed for relationships</p>
+                <p><strong>Structural Family Therapy:</strong> Family dynamics and hierarchies</p>
+                <p><strong>Narrative Therapy:</strong> Rewrite family stories</p>
+                <p>Ask therapist about their training. Not all do couples/family work.</p>
+            </div>
+
+            <div class="card">
+                <h3>Group Therapy Benefits</h3>
+                <p>Often underrated pero highly effective:</p>
+                <ul class="tips-list">
+                    <li>Universal experience - "I'm not alone"</li>
+                    <li>Learn from others' experiences</li>
+                    <li>Practice social skills</li>
+                    <li>More affordable than individual</li>
+                    <li>Multiple perspectives</li>
+                    <li>Built-in support system</li>
+                </ul>
+                <p>Types: Process groups, psychoeducational, support groups. Ask therapist about groups they run.</p>
+            </div>
+
+            <div class="card">
+                <h3>Digital Mental Health Tools</h3>
+                <p>Apps and online resources:</p>
+                <p><strong>Meditation:</strong> Headspace, Calm, Insight Timer</p>
+                <p><strong>Mood Tracking:</strong> Daylio, Moodpath, eMoods</p>
+                <p><strong>CBT Tools:</strong> MindShift, Sanvello, Woebot</p>
+                <p><strong>Crisis:</strong> Crisis Text Line, MY3 app</p>
+                <p><strong>Sleep:</strong> Sleepio, CBT-i Coach</p>
+                <p>Not replacement for therapy pero helpful supplements. Many free versions available.</p>
+            </div>
+
+            <div class="quote-box">
+                "Hindi ka nag-iisa. May mga taong handang tumulong at makinig sa iyo."
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            const sections = document.querySelectorAll('.content-section');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
